@@ -18,11 +18,11 @@
       </a>
     </div>
     <div class="categories">
-      <div class="category selected" data-category="All-Time">All Time</div>
-      <div class="category" data-category="Shōnen">Shōnen</div>
-      <div class="category" data-category="Shōjo">Shōjo</div>
-      <div class="category" data-category="Seinen">Seinen</div>
-      <div class="category" data-category="Manhwa">Manhwa</div>
+      <div class="category selected" data-category="All-Time">Profil étudiant</div>
+      <div class="category" data-category="Shōnen">Compétences</div>
+      <div class="category" data-category="Shōjo">Vie étudiante</div>
+      <div class="category" data-category="Seinen">Ambition</div>
+      <div class="category" data-category="Manhwa">Matières préférées</div>
     </div>
     <div id="roundIndicator">Round 1</div>
   </header>
@@ -37,7 +37,7 @@
     document.addEventListener('DOMContentLoaded', () => {
 
     const categoriesData = {
-      "All-Time": [
+      "Profil étudiant": [
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/OnePiece.jpg?v=1749800069071", title: "One Piece", description: "Luffy cherche le trésor légendaire pour devenir roi des pirates." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/NarutoS.jpg?v=1749799977039", title: "Naruto Shippuden", description: "Naruto veut devenir Hokage et sauver son ami Sasuke." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Dragon%20Ball%20Z.jpg?v=1749799157209", title: "Dragon Ball Z", description: "Goku protège la Terre contre de puissants ennemis." },
@@ -103,7 +103,7 @@
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Dr.Stone.jpg?v=1749799141055", title: "Dr.Stone", description: "3000 ans après la pétrificatioon de la Terre des survivants veulent reconstruire la civilisation grâce à la science." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Berserk.jpg?v=1749798544598", title: "Berserk", description: "Guts, un guerrier maudit, cherche vengeance dans un monde brutal." }
       ],
-      "Shōnen": [
+      "Compétences": [
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Dragon%20Ball%20Z.jpg?v=1749799157209", title: "Dragon Ball Z", description: "Goku protège la Terre contre de puissants ennemis." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/OnePiece.jpg?v=1749800069071", title: "One Piece", description: "Luffy cherche le trésor légendaire pour devenir roi des pirates." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/GTO.jpg?v=1749799351868", title: "GTO", description: "Un ancien voyou devient prof et tente d'éduquer une classe difficile." },
@@ -137,7 +137,7 @@
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Classroom%20Of%20The%20Elite.jpg?v=1749798892426", title: "Classroom Of The Elite", description: "Un lycée spécial forme les futurs élites du pays." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kuroko%20no%20Basket.jpg?v=1749799674221", title: "Kuroko no Basket", description: "Un joueur discret aide son équipe à devenir la meilleure au basket." }
       ],
-      "Shōjo": [
+      "Vie étudiante": [
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Kaguya-sama:Love is War", description: "Deux génies amoureux se livrent une guerre psychologique pour ne pas avouer en premier." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Quintessential%20Quintuplets.jpg?v=1749800151306", title: "Quintessential Quintuplets", description: "Un étudiant donne des cours à cinq sœurs qui tombent peu à peu amoureuses." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Fruit%20Basket.jpg?v=1749799242867", title: "Fruit Basket", description: "Une fille découvre qu’une famille se transforme en animaux du zodiaque." },
@@ -171,7 +171,7 @@
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Bunny%20Girl%20Senpai.jpg?v=1749798778360", title: "Rascal Does Not Dream of Bunny Girl Senpai", description: "Un garçon aide une actrice invisible à ne pas disparaître." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/The%20Angel%20Next%20Door.jpg?v=1749800433523", title: "The Angel Next Door Spoils Me Rotten", description: "Une voisine parfaite prend soin d’un garçon ordinaire et se rapproche de lui." },
       ],
-      "Seinen": [
+      "Ambition": [
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Death Note", description: "Un lycéen découvre un carnet qui tue les gens dont il écrit le nom à l'intérieur." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Snk.jpg?v=1749800362465", title: "Snk", description: "Des humains luttent pour survivre face à des titans mangeurs d'hommes." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Btooom!.jpg?v=1749798763071", title: "Btooom!", description: "Un jeune est piégé sur une île où il doit tuer pour survivre avec des bombes." },
@@ -189,7 +189,7 @@
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Grand%20Blue.jpg?v=1749799331305", title: "Grand Blue", description: "Un étudiant découvre la plongée sous-marine… et les excès de la vie étudiante." },
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Vagabond.jpg?v=1749800584671", title: "Vagabond", description: "L’histoire romancée du célèbre samouraï Miyamoto Musashi." },
       ],
-      "Manhwa": [
+      "Matières préférées": [
         { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Après avoir été le plus faible des chasseurs, Sung Jin-woo découvre un mystérieux « journal de quête » qui lui permet de monter de niveau indépendamment des autres. Devenu le chasseur le plus puissant, il affronte des donjons et des êtres surnaturels pour protéger l’humanité." },  
         { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/The%20Breaker.jpg?v=1749755233117", title: "The Breaker", description: "Shi-woon Yi, un lycéen timide et harcelé, devient l’élève de Chun-woo Han, un maître des arts martiaux caché. En apprenant le murim, il se retrouve mêlé à des complots et des combats où l’honneur et la loyauté sont en jeu." },  
         { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Tower%20of%20God.jpg?v=1749755289425", title: "Tower of God", description: "Bam pénètre dans la Tour mystérieuse pour retrouver Rachel, son amie disparue. À chaque étage, il doit passer des épreuves mortelles et affronter d’autres candidats, tout en découvrant les secrets du pouvoir qui régit la Tour." },  
