@@ -31,26 +31,26 @@
     document.addEventListener('DOMContentLoaded', () => {
 
     const categoriesData = {
-      "Profil étudiant": [
+      "Matière étudiés": [
         { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
         { image: "https://unsplash.com/fr/photos/lignes-de-codes-html-4hbJ-eymZ1o", title: "Programmation", description: "Apprentissage des langages informatiques pour créer des logiciels et automatiser des tâches." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Proba", description: "Compréhension des événements aléatoires et calcul des chances dans différentes situations." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Cryptologie", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Algorithmes", description: "Développement de méthodes et procédures logiques pour résoudre des problèmes informatiques." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Prog statistiques", description: "Utilisation de langages pour analyser et modéliser des données complexes." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Base de données", description: "Conception et manipulation de systèmes pour stocker et récupérer des données efficacement." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Cybersécurité", description: "Protection des systèmes et des données contre les attaques et les intrusions." },
 
       ],
       "Compétences": [
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions." },
-          { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Dragon%20Ball%20Z.jpg?v=1749799157209", title: "Dragon Ball Z", description: "Goku protège la Terre contre de puissants ennemis." },   
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Développer un site Web", description: "Créer et maintenir des sites internet accessibles et fonctionnels." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Créer une application mobile", description: "Développer des apps pour smartphones et tablettes." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Créer un Dashboard de données", description: "Construire des tableaux de bord pour visualiser et interpréter les informations." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Créer un jeu vidéos", description: "Concevoir et programmer des jeux interactifs pour différents supports." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Manipuler des bases de données", description: "Rechercher, organiser et gérer des informations de manière efficace." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Analyser des graphiques", description: "Représenter des données sous forme graphique pour mieux les comprendre." },
+        { image: "https://unsplash.com/fr/photos/une-personne-ecrit-sur-un-morceau-de-papier-ykgLX_CwtDw", title: "Déboguer un code", description: "Identifier et corriger les erreurs dans des programmes informatiques." },
+        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Dragon%20Ball%20Z.jpg?v=1749799157209", title: "Faire une enquête", description: "Collecter et analyser des informations pour en tirer des conclusions pertinentes." },   
       ],
       "Vie étudiante": [
         { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Kaguya-sama:Love is War", description: "Deux génies amoureux se livrent une guerre psychologique pour ne pas avouer en premier." },
