@@ -3,25 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
     <link rel="icon" type="logo-sd.png" href="logo-sd.png">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Page Web Manga Test</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <script src="js/testcss.js" defer></script>
 </head>
-    <header class="navbar">
-        <nav class="lien-nav">  
-            <a href="index.html">Accueil</a>
-            <a href="etude.html">Mes études</a>
-            <a href="passions.html">Mes passions</a>
-            <a href="projet.html">Mes projets persos</a>
-            <a href="contact.html">Contact</a>
-            <img src="logo.png" alt="Logo" id="logo">
-
-        </nav>
-    </header>
-     <section class="intro">
-    <h1>Mes Compétences</h1>
-    <p>Voici un aperçu de mes compétences techniques et personnelles.</p>
-  </section>
 <body>
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <div class="left-content">
+            <header>
+                <h1>Tournoi sur le monde des mangas</h1>
+            </header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="explication.html">Explication des jeux</a></li>
+                    <li class="dropdown">
+                        <a href="Jouer maintenant.html">Jouez maintenant</a>
+                        <ul class="submenu">
+                            <li><a href="Manga.html">Jeu 1 : Manga</a></li>
+                            <li><a href="Anime.html">Jeu 2 : Animé</a></li>
+                            <li><a href="Personnage.html">Jeu 3 : Personnages</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Nous contacter</a></li>
+                </ul>
+            </nav>
+            <h1>Bienvenue dans le grand tournoi sur le monde des mangas</h1>
+            <p>Amuses-toi bien, <span id="afficherPseudo"></span> !</p>
+        </div>
+<div class="right-content">
+            <h3>Tuto fonctionnement du site :</h3>
+            <div class="video-section">
+                <video controls>
+                    <source src="https://cdn.glitch.me/753b2206-8aec-499d-95ff-df1dc687ac0e/Intro%20PTUT.mp4?v=1749906136893" type="video/mp4">
+                </video>
+            </div>
+    </div>
+  </div>
+</body>
+</html>
 
