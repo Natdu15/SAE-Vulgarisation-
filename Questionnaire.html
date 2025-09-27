@@ -1,307 +1,539 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/logo-sd.png" href="images/logo-sd.png">
+    <link rel="icon" type="images/logo-sd.png" href="images/logo-sd.png">
     <link rel="stylesheet" href="css/choix.css">
-    <title>Test de personnalité</title>
-    <style>
-        .question {
-            text-align: center;
-            margin: 20px 0;
-            width: 100%;
-            font-size: 1.5em;
-        }
-        .card-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .card {
-            width: 45%;
-            max-width: 400px;
-        }
-    </style>
+    <title>Test de personalité</title>
 </head>
 <body>
 
   <header>
     <h1>Test pour mieux vous connaître.</h1>
     <div class="categories">
-      <div class="category selected" data-category="Matières préférées">Matières préférées</div>
-      <div class="category" data-category="Compétences">Compétences</div>
-      <div class="category" data-category="Vie étudiante">Vie étudiante</div>
-      <div class="category" data-category="Ambition">Ambition</div>
-      <div class="category" data-category="Profil étudiant">Profil étudiant</div>
+      <div class="category selected" data-category="All-Time">Matières préférées</div>
+      <div class="category" data-category="Shōnen">Compétences</div>
+      <div class="category" data-category="Shōjo">Vie étudiante</div>
+      <div class="category" data-category="Seinen">Ambition</div>
+      <div class="category" data-category="Manhwa">Profil étudiant</div>
     </div>
     <div id="roundIndicator">Round 1</div>
   </header>
 
-  <h2 id="question" class="question"></h2>
-
   <div class="card-container">
     <div class="card" id="card1"></div>
-    <div class="card" id="card2"></div>
+    <div class="card" id="card2"></div>    
   </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const categoriesData = {
-      "Matières préférées": [
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Statistiques", description: "Étude des données numériques pour identifier des tendances et faire des prédictions.", score: 1 },
-        { image: "https://source.unsplash.com/4hbJ-eymZ1o", title: "Programmation", description: "Apprentissage des langages informatiques pour créer des logiciels et automatiser des tâches.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Proba", description: "Compréhension des événements aléatoires et calcul des chances dans différentes situations.", score: 1 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Cryptologie", description: "Étude des techniques de sécurisation des données.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Algorithmes", description: "Développement de méthodes logiques pour résoudre des problèmes informatiques.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Prog statistiques", description: "Utilisation de langages pour analyser des données complexes.", score: 1 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Base de données", description: "Conception de systèmes pour gérer les données efficacement.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Cybersécurité", description: "Protection des systèmes contre les attaques.", score: 0 },
-      ],
-      "Compétences": [
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Développer un site Web", description: "Créer des sites internet accessibles et fonctionnels.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Créer une application mobile", description: "Développer des apps pour smartphones.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Créer un Dashboard de données", description: "Visualiser et interpréter des informations.", score: 1 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Créer un jeu vidéo", description: "Programmer des jeux interactifs.", score: 0 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Manipuler des bases de données", description: "Gérer des informations efficacement.", score: 1 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Analyser des graphiques", description: "Représenter des données graphiquement.", score: 1 },
-        { image: "https://source.unsplash.com/ykgLX_CwtDw", title: "Déboguer un code", description: "Corriger les erreurs dans les programmes.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Dragon%20Ball%20Z.jpg?v=1749799157209", title: "Faire une enquête", description: "Analyser des informations pour des conclusions pertinentes.", score: 1 },   
-      ],
-      "Vie étudiante": [
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Participer aux soirées", description: "S’investir dans la vie sociale étudiante.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Rester chez soi", description: "Préférer les activités tranquilles à la maison.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Faire du sport", description: "Pratiquer une activité physique régulièrement.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Jouer aux jeux vidéo", description: "Se divertir avec des jeux stratégiques.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Travailler le week-end", description: "Consacrer du temps aux études.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Se reposer tranquillement", description: "Prendre du temps pour se détendre.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "S’investir dans une association", description: "Participer à des projets collectifs.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Kaguya-sama.jpg?v=1749799578073", title: "Faire des projets personnels", description: "Développer ses propres idées.", score: 0 },
-      ],
-      "Ambition": [
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Trouver un emploi rapidement", description: "Intégrer le marché du travail vite.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Continuer les études", description: "Poursuivre un master ou école spécialisée.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Travailler dans une grande entreprise", description: "Rejoindre une structure organisée.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Créer sa propre entreprise", description: "Monter un projet entrepreneurial.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Faire un BUT/Master/École d’ingénieur", description: "Obtenir un diplôme supérieur.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Arrêter l’école", description: "Entrer dans la vie active.", score: 0 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Partir à l’étranger", description: "Vivre une expérience internationale.", score: 1 },
-        { image: "https://cdn.glitch.global/92297865-8423-4fe1-928c-10e45fd760d7/Death%20Note.jpg?v=1749799016263", title: "Rester travailler localement", description: "Opportunités proches de chez soi.", score: 0 },
-      ],
-      "Profil étudiant": [
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-        { image: "https://cdn.glitch.global/753b2206-8aec-499d-95ff-df1dc687ac0e/Solo%20Leveling.jpg?v=1749755167270", title: "Solo Leveling", description: "Sung Jin-woo, le plus faible des chasseurs, devient le plus puissant grâce à un journal de quête." },
-      ]
-    };
+  <script>
+// Système de test de personnalité pour BUT Science des Données
+document.addEventListener('DOMContentLoaded', () => {
 
-    const questions = {
-      "Matières préférées": "Quelle est votre matière préférée ?",
-      "Compétences": "Quelle compétence préférez-vous ?",
-      "Vie étudiante": "Quelle est votre activité préférée dans la vie étudiante ?",
-      "Ambition": "Quelle est votre ambition ?",
-      "Profil étudiant": "Quel profil étudiant vous correspond le mieux ?"
-    };
-
-    const profiles = {
-      "Matières préférées": (score) => {
-        if (score > 5) return "Vous êtes passionné par les mathématiques et les statistiques !";
-        else if (score >= 2 && score <= 5) return "Vous avez un équilibre entre maths et informatique pratique.";
-        else return "Vous êtes orienté vers le développement et la sécurité informatique.";
+  // Configuration des questions par thème avec vos dilemmes
+  const questionsData = {
+    "Matières préférées": [
+      {
+        question: "Entre ces deux domaines mathématiques, tu préfères :",
+        choiceA: { text: "Probabilités 📊", points: { statistique: 3, analytique: 2 } },
+        choiceB: { text: "Cryptologie 🔐", points: { securite: 3, logique: 2 } }
       },
-      "Compétences": (score) => {
-        if (score > 5) return "Vous excellez dans l'analyse de données !";
-        else if (score >= 2 && score <= 5) return "Vous avez des compétences mixtes en dev et data.";
-        else return "Vous êtes un développeur pur !";
+      {
+        question: "Pour résoudre un problème informatique, tu préfères :",
+        choiceA: { text: "Algorithmes 🧩", points: { logique: 3, technique: 2 } },
+        choiceB: { text: "Programmation statistique 📋", points: { statistique: 3, analytique: 1 } }
       },
-      "Vie étudiante": (score) => {
-        if (score > 5) return "Vous êtes un super fêtard !";
-        else if (score >= 2 && score <= 5) return "Vous aimez sortir de temps en temps.";
-        else return "Vous ne sortez pratiquement jamais.";
+      {
+        question: "Entre ces deux spécialités techniques, tu choisis :",
+        choiceA: { text: "Bases de données 🗄️", points: { systematique: 3, technique: 2 } },
+        choiceB: { text: "Cybersécurité 🤖", points: { securite: 3, protection: 2 } }
+      }
+    ],
+    "Compétences": [
+      {
+        question: "Pour un projet de développement, tu préfères :",
+        choiceA: { text: "Développer des sites web 🌐", points: { web: 3, interface: 2 } },
+        choiceB: { text: "Créer des applis mobiles 📱", points: { mobile: 3, innovation: 2 } }
       },
-      "Ambition": (score) => {
-        if (score > 5) return "Vous êtes très ambitieux !";
-        else if (score >= 2 && score <= 5) return "Vous avez une ambition modérée.";
-        else return "Vous préférez la stabilité.";
+      {
+        question: "Entre ces deux projets créatifs, tu choisis :",
+        choiceA: { text: "Créer un Dashboard de données ⚙️", points: { visualisation: 3, analytique: 2 } },
+        choiceB: { text: "Créer un jeu vidéo 🎮", points: { ludique: 3, creatif: 2 } }
       },
-      "Profil étudiant": null
-    };
+      {
+        question: "Tu préfères travailler avec :",
+        choiceA: { text: "Manipuler des bases de données 🗄️", points: { donnees: 3, systematique: 2 } },
+        choiceB: { text: "Visualiser des graphiques 📊", points: { visualisation: 3, communication: 2 } }
+      },
+      {
+        question: "Face à un problème technique, tu préfères :",
+        choiceA: { text: "Déboguer du code 🐞", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Faire une enquête 💡", points: { investigation: 3, curieux: 2 } }
+      }
+    ],
+    "Profil étudiant": [
+      {
+        question: "Pour les projets scolaires, tu préfères :",
+        choiceA: { text: "Travailler seul 🧑‍💻", points: { independant: 3, concentre: 2 } },
+        choiceB: { text: "Avancer en groupe 👥", points: { collaboratif: 3, social: 2 } }
+      },
+      {
+        question: "Dans une équipe de projet, tu es plutôt :",
+        choiceA: { text: "Être le leader 👑", points: { leadership: 3, decisif: 2 } },
+        choiceB: { text: "Soutenir l'équipe 🤝", points: { supportif: 3, cooperatif: 2 } }
+      },
+      {
+        question: "Face aux imprévus, tu as tendance à :",
+        choiceA: { text: "Improviser selon la situation 🎲", points: { adaptable: 3, flexible: 2 } },
+        choiceB: { text: "Tout planifier 📅", points: { planificateur: 3, organise: 2 } }
+      },
+      {
+        question: "Pour tes études, tu préfères :",
+        choiceA: { text: "Suivre un cadre strict 📏", points: { structure: 3, discipline: 2 } },
+        choiceB: { text: "Avancer librement 🌀", points: { liberte: 3, creatif: 2 } }
+      }
+    ],
+    "Ambition": [
+      {
+        question: "Après tes études, tu veux :",
+        choiceA: { text: "Trouver un emploi rapidement 💼", points: { pragmatique: 3, actif: 2 } },
+        choiceB: { text: "Continuer les études 🎓", points: { academique: 3, specialisation: 2 } }
+      },
+      {
+        question: "Pour ton avenir professionnel, tu préfères :",
+        choiceA: { text: "Travailler dans une grande entreprise 🏢", points: { stabilite: 3, securite: 2 } },
+        choiceB: { text: "Créer sa propre entreprise 🚀", points: { entrepreneur: 3, innovant: 2 } }
+      },
+      {
+        question: "Concernant la poursuite d'études, tu préfères :",
+        choiceA: { text: "Faire un BUT/Master/École d'ingénieur 📚", points: { formation: 3, expertise: 2 } },
+        choiceB: { text: "Arrêter l'école 🏛️", points: { experience: 3, pratique: 2 } }
+      },
+      {
+        question: "Pour ta carrière, tu veux :",
+        choiceA: { text: "Partir à l'étranger ✈️", points: { international: 3, aventurier: 2 } },
+        choiceB: { text: "Rester travailler localement 🏠", points: { local: 3, ancrage: 2 } }
+      }
+    ],
+    "Vie étudiante": [
+      {
+        question: "Le soir après les cours, tu préfères :",
+        choiceA: { text: "Participer aux soirées 🎉", points: { social: 3, festif: 2 } },
+        choiceB: { text: "Rester chez soi 📚", points: { calme: 3, studieux: 2 } }
+      },
+      {
+        question: "Pour te détendre, tu choisis :",
+        choiceA: { text: "Faire du sport 🏋️", points: { actif: 3, sante: 2 } },
+        choiceB: { text: "Jouer aux jeux vidéo 🎮", points: { numerique: 3, detente: 2 } }
+      },
+      {
+        question: "Les week-ends, tu préfères :",
+        choiceA: { text: "Travailler le week-end 🌍", points: { travailleur: 3, ambitieux: 2 } },
+        choiceB: { text: "Se reposer tranquillement 🛋️", points: { equilibre: 3, ressourcement: 2 } }
+      },
+      {
+        question: "Pour t'épanouir, tu préfères :",
+        choiceA: { text: "S'investir dans une asso 🤲", points: { engagement: 3, altruiste: 2 } },
+        choiceB: { text: "Faire des projets personnels 📅", points: { personnel: 3, autonome: 2 } }
+      }
+    ]
+  };
 
-    let selectedCategory = "Matières préférées";
-    let currentRound = [];
-    let winners = [];
-    let pairIndex = 0;
-    let roundNumber = 1;
-    let totalRounds = 0;
-    let totalScore = 0;
-
-    const card1 = document.getElementById('card1');
-    const card2 = document.getElementById('card2');
-    const roundIndicator = document.getElementById('roundIndicator');
-    const categoryElements = document.querySelectorAll('.category');
-    const cardContainer = document.querySelector('.card-container');
-
-    function normalizeCategory(cat) {
-      return cat.trim().toLowerCase();
-    }
-
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+  // Profils de personnalité par thème
+  const personalityProfiles = {
+    "Matières préférées": {
+      "L'Analyste Statistique": {
+        description: "Tu excelles dans l'analyse de données et les probabilités. Tu aimes transformer les chiffres en insights.",
+        traits: ["statistique", "analytique"],
+        career: "Data Analyst, Biostatisticien, Actuaire"
+      },
+      "L'Expert Sécurité": {
+        description: "Tu es passionné par la protection des systèmes et la cryptographie. La cybersécurité te fascine.",
+        traits: ["securite", "protection"],
+        career: "Expert cybersécurité, Consultant sécurité, Cryptographe"
+      },
+      "Le Développeur Logique": {
+        description: "Tu excelles dans la résolution algorithmique et la programmation structurée.",
+        traits: ["logique", "technique"],
+        career: "Ingénieur logiciel, Développeur backend, Architecte système"
+      },
+      "L'Organisateur de Données": {
+        description: "Tu maîtrises parfaitement la gestion et l'organisation des bases de données.",
+        traits: ["systematique", "donnees"],
+        career: "Administrateur base de données, Data Engineer, Architecte données"
+      }
+    },
+    "Compétences": {
+      "Le Développeur Web/Mobile": {
+        description: "Tu excelles dans la création d'interfaces et d'applications utilisateur.",
+        traits: ["web", "mobile", "interface"],
+        career: "Développeur Full-Stack, Développeur mobile, UX/UI Designer"
+      },
+      "Le Visualisateur de Données": {
+        description: "Tu sais parfaitement présenter et communiquer les données de manière claire.",
+        traits: ["visualisation", "communication"],
+        career: "Data Visualizer, Business Intelligence, Consultant BI"
+      },
+      "Le Créateur Ludique": {
+        description: "Tu combines créativité et technique pour créer des expériences engageantes.",
+        traits: ["ludique", "creatif", "innovation"],
+        career: "Game Developer, Creative Developer, Designer interactif"
+      },
+      "L'Investigateur Technique": {
+        description: "Tu excelles dans l'analyse technique et la résolution de problèmes complexes.",
+        traits: ["investigation", "technique", "methodique"],
+        career: "DevOps Engineer, Expert technique, Consultant IT"
+      }
+    },
+    "Profil étudiant": {
+      "L'Indépendant Organisé": {
+        description: "Tu travailles de manière autonome avec une approche structurée et planifiée.",
+        traits: ["independant", "planificateur", "structure"],
+        career: "Consultant indépendant, Chef de projet, Entrepreneur"
+      },
+      "Le Leader Collaboratif": {
+        description: "Tu sais diriger une équipe tout en valorisant la collaboration.",
+        traits: ["leadership", "collaboratif", "decisif"],
+        career: "Manager d'équipe, Directeur technique, Product Owner"
+      },
+      "L'Adaptable Créatif": {
+        description: "Tu excelles dans l'improvisation et l'innovation face aux défis.",
+        traits: ["adaptable", "flexible", "creatif"],
+        career: "Consultant en transformation, Innovation Manager, Startup"
+      },
+      "Le Collaborateur Structuré": {
+        description: "Tu préfères travailler en équipe dans un environnement organisé.",
+        traits: ["supportif", "cooperatif", "discipline"],
+        career: "Développeur en équipe, Analyste, Consultant junior"
+      }
+    },
+    "Ambition": {
+      "Le Pragmatique Stable": {
+        description: "Tu vises une insertion professionnelle rapide dans un environnement sécurisé.",
+        traits: ["pragmatique", "stabilite", "local"],
+        career: "Employé en grande entreprise, Fonctionnaire, Consultant local"
+      },
+      "L'Entrepreneur Innovant": {
+        description: "Tu veux créer ton propre projet et repousser les limites.",
+        traits: ["entrepreneur", "innovant", "international"],
+        career: "Fondateur de startup, CEO, Consultant international"
+      },
+      "L'Expert Académique": {
+        description: "Tu veux approfondir tes connaissances et devenir un spécialiste reconnu.",
+        traits: ["academique", "specialisation", "formation"],
+        career: "Chercheur, Enseignant-chercheur, Expert technique senior"
+      },
+      "L'Expérimentateur Pratique": {
+        description: "Tu préfères apprendre par l'expérience directe plutôt que par la théorie.",
+        traits: ["experience", "pratique", "aventurier"],
+        career: "Consultant freelance, Technicien expert, Entrepreneur"
+      }
+    },
+    "Vie étudiante": {
+      "Le Social Actif": {
+        description: "Tu combines vie sociale épanouie et activité physique. Tu es énergique et engagé.",
+        traits: ["social", "actif", "engagement"],
+        career: "Manager d'équipe, Consultant, Responsable RH"
+      },
+      "L'Équilibré Numérique": {
+        description: "Tu sais allier détente numérique et équilibre personnel.",
+        traits: ["numerique", "equilibre", "personnel"],
+        career: "Développeur, Game Designer, Consultant IT"
+      },
+      "L'Ambitieux Travailleur": {
+        description: "Tu es très motivé et n'hésites pas à t'investir pleinement dans tes projets.",
+        traits: ["travailleur", "ambitieux", "festif"],
+        career: "Entrepreneur, Directeur, Consultant senior"
+      },
+      "Le Studieux Autonome": {
+        description: "Tu privilégies le calme et l'autonomie pour développer tes projets personnels.",
+        traits: ["calme", "studieux", "autonome"],
+        career: "Chercheur, Développeur indépendant, Analyste"
       }
     }
+  };
 
-    function updateRoundIndicator() {
-      roundIndicator.textContent = `Round ${roundNumber} sur ${totalRounds} (${currentRound.length} participants)`;
-    }
+  // Variables globales
+  let selectedCategory = "Matières préférées";
+  let currentQuestionIndex = 0;
+  let scores = {};
+  let currentQuestions = [];
 
-    async function loadPair() {
-      if (pairIndex < currentRound.length - 1) {
-        const leftManga = currentRound[pairIndex];
-        const rightManga = currentRound[pairIndex + 1];
-        card1.innerHTML = `
-          <img src="${leftManga.image}" alt="${leftManga.title}">
-          <div class="info">
-            <h2>${leftManga.title}</h2>
-            <p>${leftManga.description}</p>
-          </div>
-        `;
-        card2.innerHTML = `
-          <img src="${rightManga.image}" alt="${rightManga.title}">
-          <div class="info">
-            <h2>${rightManga.title}</h2>
-            <p>${rightManga.description}</p>
-          </div>
-        `;
-      } else {
-        if (winners.length === 1) {
-          const profileFunc = profiles[selectedCategory];
-          let resultHTML;
-          if (profileFunc) {
-            const profileText = profileFunc(totalScore);
-            resultHTML = `
-              <h1>🏆 Résultat du Test 🏆</h1>
-              <h2>${profileText}</h2>
-              <p>Score total : ${totalScore}</p>
-              <p>Votre choix final : ${winners[0].title}</p>
-              <img src="${winners[0].image}" alt="${winners[0].title}" class="winner-img">
-              <p>${winners[0].description}</p>
-            `;
-          } else {
-            resultHTML = `
-              <h1>🏆 Gagnant 🏆</h1>
-              <h2>${winners[0].title}</h2>
-              <img src="${winners[0].image}" alt="${winners[0].title}" class="winner-img">
-              <p>${winners[0].description}</p>
-            `;
-          }
+  // Éléments DOM
+  const card1 = document.getElementById('card1');
+  const card2 = document.getElementById('card2');
+  const roundIndicator = document.getElementById('roundIndicator');
+  const categoryElements = document.querySelectorAll('.category');
 
-          document.body.classList.add('victory-background');
-          document.body.innerHTML = `
-            <button class="btn-finish">← Retour immédiat</button>
-            <div class="winner">
-              ${resultHTML}
-              <p class="compte-rebours">Retour à l'accueil dans <span id="countdown">10</span> secondes...</p>
-              <button id="btn-stats" class="gradient-button">📊 Accéder aux Statistiques</button>
-            </div>
-          `;
+  // Initialiser les scores
+  function initializeScores() {
+    scores = {
+      // Matières
+      statistique: 0, analytique: 0, securite: 0, logique: 0, technique: 0, 
+      systematique: 0, protection: 0, donnees: 0,
+      // Compétences
+      web: 0, interface: 0, mobile: 0, innovation: 0, visualisation: 0, 
+      communication: 0, ludique: 0, creatif: 0, investigation: 0, methodique: 0,
+      // Profil étudiant
+      independant: 0, concentre: 0, collaboratif: 0, social: 0, leadership: 0,
+      decisif: 0, supportif: 0, cooperatif: 0, adaptable: 0, flexible: 0,
+      planificateur: 0, organise: 0, structure: 0, discipline: 0, liberte: 0,
+      // Ambition
+      pragmatique: 0, actif: 0, academique: 0, specialisation: 0, stabilite: 0,
+      entrepreneur: 0, innovant: 0, formation: 0, expertise: 0, experience: 0,
+      pratique: 0, international: 0, aventurier: 0, local: 0, ancrage: 0,
+      // Vie étudiante
+      festif: 0, calme: 0, studieux: 0, sante: 0, numerique: 0, detente: 0,
+      travailleur: 0, ambitieux: 0, equilibre: 0, ressourcement: 0, engagement: 0,
+      altruiste: 0, personnel: 0, autonome: 0
+    };
+  }
 
-          document.getElementById('btn-stats').addEventListener('click', () => {
-            window.location.href = 'statistiques.html';
-          });
+  // Calculer le profil dominant pour un thème
+  function calculateDominantProfile(category) {
+    const profiles = personalityProfiles[category];
+    let maxScore = 0;
+    let dominantProfile = null;
 
-          let seconds = 10;
-          const countdownEl = document.getElementById("countdown");
-          const timer = setInterval(() => {
-            seconds--;
-            countdownEl.textContent = seconds;
-            if (seconds <= 0) {
-              clearInterval(timer);
-              window.location.href = "Manga.html";
-            }
-          }, 1000);
-
-          document.querySelector('.btn-finish').addEventListener('click', () => {
-            clearInterval(timer);
-            window.location.href = "Manga.html";
-          });
-        } else {
-          currentRound = winners;
-          winners = [];
-          pairIndex = 0;
-          roundNumber++;
-          shuffleArray(currentRound);
-          updateRoundIndicator();
-          loadPair();
-        }
-      }
-    }
-
-    function chooseWinner(index) {
-      const chosen = currentRound[pairIndex + index];
-      totalScore += chosen.score || 0;
-      winners.push(chosen);
-      pairIndex += 2;
-      loadPair();
-    }
-
-    function initializeTournament() {
-      const keys = Object.keys(categoriesData);
-      const foundKey = keys.find(k => normalizeCategory(k) === normalizeCategory(selectedCategory));
-
-      if (foundKey && categoriesData[foundKey].length > 0) {
-        currentRound = [...categoriesData[foundKey]];
-        totalRounds = Math.log2(currentRound.length);
-        if (!Number.isInteger(totalRounds)) {
-          const validLength = Math.pow(2, Math.floor(totalRounds));
-          currentRound = currentRound.slice(0, validLength);
-          totalRounds = Math.floor(totalRounds);
-        }
-        shuffleArray(currentRound);
-        winners = [];
-        pairIndex = 0;
-        roundNumber = 1;
-        totalScore = 0;
-        updateRoundIndicator();
-        document.getElementById('question').textContent = questions[foundKey] || "Choisissez votre préféré.";
-        loadPair();
-      } else {
-        cardContainer.innerHTML = `<div class="winner"><h2>Aucun choix pour cette catégorie.</h2></div>`;
-        roundIndicator.textContent = '';
-      }
-    }
-
-    categoryElements.forEach(elem => {
-      elem.addEventListener('click', () => {
-        categoryElements.forEach(e => e.classList.remove('selected'));
-        elem.classList.add('selected');
-        selectedCategory = elem.getAttribute('data-category');
-        initializeTournament();
+    for (const [profileName, profileData] of Object.entries(profiles)) {
+      let profileScore = 0;
+      profileData.traits.forEach(trait => {
+        profileScore += scores[trait] || 0;
       });
+      
+      if (profileScore > maxScore) {
+        maxScore = profileScore;
+        dominantProfile = { name: profileName, ...profileData, score: profileScore };
+      }
+    }
+
+    return dominantProfile;
+  }
+
+  // Mettre à jour l'indicateur de progression
+  function updateProgressIndicator() {
+    const totalQuestions = currentQuestions.length;
+    const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+    
+    roundIndicator.innerHTML = `
+      <div style="margin-bottom: 0.5rem;">
+        Question ${currentQuestionIndex + 1} sur ${totalQuestions}
+      </div>
+      <div style="background: rgba(255,255,255,0.3); border-radius: 10px; height: 8px; overflow: hidden;">
+        <div style="background: #4CAF50; height: 100%; width: ${progress}%; transition: width 0.3s ease; border-radius: 10px;"></div>
+      </div>
+    `;
+  }
+
+  // Afficher une question
+  function displayQuestion() {
+    if (currentQuestionIndex < currentQuestions.length) {
+      const question = currentQuestions[currentQuestionIndex];
+      
+      // Mise à jour de l'indicateur
+      updateProgressIndicator();
+      
+      // Affichage de la question
+      card1.innerHTML = `
+        <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
+            ${question.question}
+          </h3>
+          <div style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease;">
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option A</h4>
+            <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceA.text}</p>
+          </div>
+        </div>
+      `;
+
+      card2.innerHTML = `
+        <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
+            ${question.question}
+          </h3>
+          <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease;">
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option B</h4>
+            <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceB.text}</p>
+          </div>
+        </div>
+      `;
+    } else {
+      showResults();
+    }
+  }
+
+  // Traiter la réponse
+  function handleAnswer(choice) {
+    const question = currentQuestions[currentQuestionIndex];
+    const selectedChoice = choice === 'A' ? question.choiceA : question.choiceB;
+    
+    // Ajouter les points au score
+    Object.entries(selectedChoice.points).forEach(([trait, points]) => {
+      scores[trait] += points;
     });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryParam = urlParams.get('category');
-    if (categoryParam) {
-      selectedCategory = categoryParam;
-      categoryElements.forEach(e => e.classList.remove('selected'));
-      const targetCat = Array.from(categoryElements).find(c => normalizeCategory(c.dataset.category) === normalizeCategory(categoryParam));
-      if (targetCat) targetCat.classList.add('selected');
+    currentQuestionIndex++;
+    
+    // Animation de transition
+    document.querySelector('.card-container').style.opacity = '0.5';
+    setTimeout(() => {
+      displayQuestion();
+      document.querySelector('.card-container').style.opacity = '1';
+    }, 200);
+  }
+
+  // Afficher les résultats
+  function showResults() {
+    const profile = calculateDominantProfile(selectedCategory);
+    
+    if (profile) {
+      document.body.classList.add('victory-background');
+      document.body.innerHTML = `
+        <button class="btn-finish">← Retour aux catégories</button>
+        <div class="winner">
+          <h1>🎯 Votre Profil : ${selectedCategory}</h1>
+          <h2>${profile.name}</h2>
+          <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; backdrop-filter: blur(10px);">
+            <p style="font-size: 1.2rem; line-height: 1.6; color: white; margin-bottom: 1.5rem;">
+              ${profile.description}
+            </p>
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+              <h4 style="color: #f39c12; margin-bottom: 0.5rem;">💼 Débouchés recommandés :</h4>
+              <p style="color: white; font-weight: 600;">${profile.career}</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button id="btn-other-category" class="gradient-button">🔄 Tester une autre catégorie</button>
+            <button id="btn-stats" class="gradient-button">📊 Voir mes statistiques</button>
+          </div>
+        </div>
+      `;
+
+      // Événements pour les boutons de résultat
+      document.querySelector('.btn-finish').addEventListener('click', () => {
+        location.reload();
+      });
+
+      document.getElementById('btn-other-category').addEventListener('click', () => {
+        location.reload();
+      });
+
+      document.getElementById('btn-stats').addEventListener('click', () => {
+        showDetailedStats();
+      });
     }
+  }
 
-    card1.addEventListener('click', () => chooseWinner(0));
-    card2.addEventListener('click', () => chooseWinner(1));
+  // Afficher les statistiques détaillées
+  function showDetailedStats() {
+    let statsHTML = `
+      <button class="btn-finish">← Retour</button>
+      <div class="winner">
+        <h1>📊 Vos Statistiques Détaillées</h1>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+    `;
 
-    initializeTournament();
+    // Grouper les scores par catégories
+    const statCategories = {
+      "Orientation Académique": ["statistique", "analytique", "academique", "formation"],
+      "Compétences Techniques": ["technique", "logique", "systematique", "methodique"],
+      "Créativité & Innovation": ["creatif", "innovation", "ludique", "entrepreneur"],
+      "Leadership & Social": ["leadership", "collaboratif", "social", "engagement"],
+      "Autonomie & Organisation": ["independant", "planificateur", "organise", "discipline"]
+    };
+
+    Object.entries(statCategories).forEach(([categoryName, traits]) => {
+      statsHTML += `
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
+          <h3 style="color: #f39c12; margin-bottom: 1rem;">${categoryName}</h3>
+      `;
+      
+      traits.forEach(trait => {
+        const score = scores[trait] || 0;
+        const percentage = Math.min((score / 9) * 100, 100); // Normalisation sur 9 points max
+        
+        if (score > 0) {
+          statsHTML += `
+            <div style="margin-bottom: 0.8rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                <span style="color: white; font-size: 0.9rem; text-transform: capitalize;">${trait}</span>
+                <span style="color: white; font-weight: 600;">${score} pts</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.3); border-radius: 5px; height: 6px; overflow: hidden;">
+                <div style="background: linear-gradient(90deg, #4CAF50, #45a049); height: 100%; width: ${percentage}%; border-radius: 5px; transition: width 0.5s ease;"></div>
+              </div>
+            </div>
+          `;
+        }
+      });
+      
+      statsHTML += `</div>`;
+    });
+
+    statsHTML += `
+        </div>
+        <button id="btn-new-test" class="gradient-button">🔄 Refaire le test</button>
+      </div>
+    `;
+
+    document.body.innerHTML = statsHTML;
+
+    // Événements pour les boutons
+    document.querySelector('.btn-finish').addEventListener('click', () => {
+      location.reload();
+    });
+
+    document.getElementById('btn-new-test').addEventListener('click', () => {
+      location.reload();
+    });
+  }
+
+  // Initialiser le quiz pour une catégorie
+  function initializeQuiz() {
+    const category = selectedCategory;
+    currentQuestions = questionsData[category] || [];
+    currentQuestionIndex = 0;
+    
+    if (currentQuestions.length > 0) {
+      displayQuestion();
+    } else {
+      document.querySelector('.card-container').innerHTML = `
+        <div class="winner">
+          <h2>Aucune question disponible pour cette catégorie</h2>
+        </div>
+      `;
+    }
+  }
+
+  // Mapper les data-category aux vraies catégories
+  const categoryMapping = {
+    "All-Time": "Matières préférées",
+    "Shōnen": "Compétences", 
+    "Shōjo": "Vie étudiante",
+    "Seinen": "Ambition",
+    "Manhwa": "Profil étudiant"
+  };
+
+  // Gestion des événements de catégorie
+  categoryElements.forEach(elem => {
+    elem.addEventListener('click', () => {
+      categoryElements.forEach(e => e.classList.remove('selected'));
+      elem.classList.add('selected');
+      const dataCategory = elem.getAttribute('data-category');
+      selectedCategory = categoryMapping[dataCategory] || dataCategory;
+      initializeScores();
+      initializeQuiz();
+    });
+  });
+
+  // Gestion des clics sur les cartes
+  card1.addEventListener('click', () => handleAnswer('A'));
+  card2.addEventListener('click', () => handleAnswer('B'));
+
+  // Initialisation
+  initializeScores();
+  initializeQuiz();
 });
-  </script>
+    </script> 
   </body>
   </html>
