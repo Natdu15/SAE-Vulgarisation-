@@ -12,11 +12,11 @@
   <header>
     <h1>Test pour mieux vous connaître.</h1>
     <div class="categories">
-      <div class="category selected" data-category="All-Time">Matières préférées</div>
-      <div class="category" data-category="Shōnen">Compétences</div>
-      <div class="category" data-category="Shōjo">Vie étudiante</div>
-      <div class="category" data-category="Seinen">Ambition</div>
-      <div class="category" data-category="Manhwa">Profil étudiant</div>
+      <div class="category selected" data-category="Matières préférées">Matières préférées</div>
+      <div class="category" data-category="Compétences">Compétences</div>
+      <div class="category" data-category="Vie étudiante">Vie étudiante</div>
+      <div class="category" data-category="Ambition">Ambition</div>
+      <div class="category" data-category="Profil étudiant">Profil étudiant</div>
     </div>
     <div id="roundIndicator">Round 1</div>
   </header>
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const personalityProfiles = {
     "Matières préférées": {
       "L'Analyste Statistique": {
-        description: "Tu excelles dans l'analyse de données et les probabilités. Tu aimes transformer les chiffres en insights.",
+        description: "Tu excelles dans l'analyse de données et les probabilités. Tu aimes transformer les chiffres en données pour évoquer des tendances.",
         traits: ["statistique", "analytique"],
         career: "Data Analyst, Biostatisticien, Actuaire"
       },
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         career: "Développeur Full-Stack, Développeur mobile, UX/UI Designer"
       },
       "Le Visualisateur de Données": {
-        description: "Tu sais parfaitement présenter et communiquer les données de manière claire.",
+        description: "Tu sais parfaitement présenter et communiquer les données de manière claire et précise.",
         traits: ["visualisation", "communication"],
         career: "Data Visualizer, Business Intelligence, Consultant BI"
       },
@@ -185,49 +185,44 @@ document.addEventListener('DOMContentLoaded', () => {
         career: "DevOps Engineer, Expert technique, Consultant IT"
       }
     },
-    "Profil étudiant": {
-      "L'Indépendant Organisé": {
-        description: "Tu travailles de manière autonome avec une approche structurée et planifiée.",
-        traits: ["independant", "planificateur", "structure"],
-        career: "Consultant indépendant, Chef de projet, Entrepreneur"
-      },
-      "Le Leader Collaboratif": {
-        description: "Tu sais diriger une équipe tout en valorisant la collaboration.",
-        traits: ["leadership", "collaboratif", "decisif"],
-        career: "Manager d'équipe, Directeur technique, Product Owner"
-      },
-      "L'Adaptable Créatif": {
-        description: "Tu excelles dans l'improvisation et l'innovation face aux défis.",
-        traits: ["adaptable", "flexible", "creatif"],
-        career: "Consultant en transformation, Innovation Manager, Startup"
-      },
-      "Le Collaborateur Structuré": {
-        description: "Tu préfères travailler en équipe dans un environnement organisé.",
-        traits: ["supportif", "cooperatif", "discipline"],
-        career: "Développeur en équipe, Analyste, Consultant junior"
-      }
-    },
-    "Ambition": {
-      "Le Pragmatique Stable": {
-        description: "Tu vises une insertion professionnelle rapide dans un environnement sécurisé.",
-        traits: ["pragmatique", "stabilite", "local"],
-        career: "Employé en grande entreprise, Fonctionnaire, Consultant local"
-      },
-      "L'Entrepreneur Innovant": {
-        description: "Tu veux créer ton propre projet et repousser les limites.",
-        traits: ["entrepreneur", "innovant", "international"],
-        career: "Fondateur de startup, CEO, Consultant international"
-      },
-      "L'Expert Académique": {
-        description: "Tu veux approfondir tes connaissances et devenir un spécialiste reconnu.",
-        traits: ["academique", "specialisation", "formation"],
-        career: "Chercheur, Enseignant-chercheur, Expert technique senior"
-      },
-      "L'Expérimentateur Pratique": {
-        description: "Tu préfères apprendre par l'expérience directe plutôt que par la théorie.",
-        traits: ["experience", "pratique", "aventurier"],
-        career: "Consultant freelance, Technicien expert, Entrepreneur"
-      }
+      "Profil étudiant": {
+  "L'Indépendant Organisé": {
+    "description": "Tu travailles de manière autonome avec une approche structurée et planifiée.",
+    "traits": ["independant", "planificateur", "structure"],
+    "conseils": [
+      "Planifie tes révisions avec des objectifs clairs et atteignables.",
+      "Utilise des outils comme des agendas ou des applications de gestion de tâches.",
+      "Exploite ta rigueur pour avancer dans des projets longs et complexes."
+    ]
+  },
+  "Le Leader Collaboratif": {
+    "description": "Tu sais diriger une équipe tout en valorisant la collaboration.",
+    "traits": ["leadership", "collaboratif", "decisif"],
+    "conseils": [
+      "Prends des initiatives dans les travaux de groupe pour organiser et motiver les autres.",
+      "Apprends à déléguer et à faire confiance à tes coéquipiers.",
+      "Travaille ton écoute active pour améliorer la cohésion d’équipe."
+    ]
+  },
+  "L'Adaptable Créatif": {
+    "description": "Tu excelles dans l'improvisation et l'innovation face aux défis.",
+    "traits": ["adaptable", "flexible", "creatif"],
+    "conseils": [
+      "Utilise ta créativité pour trouver des approches originales lors des projets ou examens.",
+      "Ne crains pas de proposer des idées différentes, même si elles sortent des sentiers battus.",
+      "Complète ton inventivité par un minimum de planification pour éviter de te disperser."
+    ]
+  }
+  },
+  "Le Collaborateur Structuré": {
+    "description": "Tu préfères travailler en équipe dans un environnement organisé.",
+    "traits": ["supportif", "cooperatif", "discipline"],
+    "conseils": [
+      "Appuie tes camarades en apportant ton sens de l’organisation aux projets collectifs.",
+      "Cherche à clarifier les rôles et les responsabilités pour éviter les confusions.",
+      "Mets en avant ta discipline pour respecter les échéances communes."
+    ]
+  }
     },
     "Vie étudiante": {
       "Le Social Actif": {
@@ -504,15 +499,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
   }
-
-  // Mapper les data-category aux vraies catégories
-  const categoryMapping = {
-    "All-Time": "Matières préférées",
-    "Shōnen": "Compétences", 
-    "Shōjo": "Vie étudiante",
-    "Seinen": "Ambition",
-    "Manhwa": "Profil étudiant"
-  };
 
   // Gestion des événements de catégorie
   categoryElements.forEach(elem => {
