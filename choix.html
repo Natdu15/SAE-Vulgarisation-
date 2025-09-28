@@ -455,61 +455,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Traiter la réponse avec animations
+  // Traiter la réponse - transition simple
   function handleAnswer(choice) {
     const question = currentQuestions[currentQuestionIndex];
     const selectedChoice = choice === 'A' ? question.choiceA : question.choiceB;
     const selectedCard = choice === 'A' ? card1 : card2;
-    const otherCard = choice === 'A' ? card2 : card1;
     
-    // Désactiver les clics et les hovers pendant l'animation
+    // Désactiver les clics pendant l'animation
     card1.style.pointerEvents = 'none';
     card2.style.pointerEvents = 'none';
     
-    // Désactiver les transitions CSS qui pourraient interférer
-    gsap.set([card1, card2], { pointerEvents: 'none' });
+    // Ajouter les points au score
+    Object.entries(selectedChoice.points).forEach(([trait, points]) => {
+      scores[trait] += points;
+    });
+
+    currentQuestionIndex++;
     
-    // Animation de sélection
+    // Animation simple: feedback visuel puis transition
     gsap.timeline()
-      .to(selectedCard, {
-        duration: 0.4,
-        scale: 1.05, // Réduction du scale pour moins d'effet
-        z: 50,
-        boxShadow: "0 20px 40px rgba(76, 175, 80, 0.3)",
-        ease: "power2.out"
-      })
-      .to(otherCard, {
-        duration: 0.4,
-        scale: 0.95,
-        opacity: 0.5,
-        ease: "power2.out"
-      }, "<")
       .to(selectedCard.querySelector('.choice-button'), {
-        duration: 0.3,
+        duration: 0.2,
         backgroundColor: "#4CAF50",
         ease: "power2.out"
-      }, "<")
-      .call(() => {
-        // Ajouter les points au score
-        Object.entries(selectedChoice.points).forEach(([trait, points]) => {
-          scores[trait] += points;
-        });
-
-        currentQuestionIndex++;
       })
-      // Transition directe vers la sortie sans revenir à la taille normale
       .to([card1, card2], {
-        duration: 0.5,
+        duration: 0.4,
         opacity: 0,
-        scale: 0.95,
-        rotationX: 15,
-        ease: "power3.in"
-      }, "+=0.2")
+        ease: "power2.in"
+      }, "+=0.3")
       .call(() => {
         // Réactiver les clics
         card1.style.pointerEvents = 'auto';
         card2.style.pointerEvents = 'auto';
-        gsap.set([card1, card2], { pointerEvents: 'auto' });
         
         // Afficher la question suivante
         displayQuestion();
@@ -685,29 +663,9 @@ document.addEventListener('DOMContentLoaded', () => {
     card2.addEventListener('click', () => handleAnswer('B'));
   }
 
-  // Initialisation avec animation d'entrée
-  gsap.set([card1, card2], { opacity: 0, y: 50 });
-  
+  // Initialisation simple
   initializeScores();
-  
-  // Animation d'entrée initiale
-  gsap.timeline()
-    .to("header", {
-      duration: 0.8,
-      opacity: 1,
-      y: 0,
-      ease: "power2.out"
-    })
-    .call(() => {
-      initializeQuiz();
-    })
-    .to([card1, card2], {
-      duration: 0.6,
-      opacity: 1,
-      y: 0,
-      stagger: 0.1,
-      ease: "power2.out"
-    }, "-=0.2");
+  initializeQuiz();
 });
     </script> 
   </body>
