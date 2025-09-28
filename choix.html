@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "Vos Motivations Général": "Vie étudiante"
   };
 
-  // Configuration des questions par thème avec vos dilemmes
+  // Configuration des questions par thème
   const questionsData = {
     "Matières préférées": [
       {
@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // Afficher une question avec animations GSAP
+  // Afficher une question
   function displayQuestion() {
     if (currentQuestionIndex < currentQuestions.length) {
       const question = currentQuestions[currentQuestionIndex];
@@ -359,18 +359,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // Mise à jour de l'indicateur
       updateProgressIndicator();
       
-      // Configuration initiale pour une apparition synchrone
+      // Reset des cartes à leur état initial
       gsap.set([card1, card2], { 
         opacity: 0, 
-        scale: 0.95,
-        rotationX: -15,
-        transformPerspective: 1000
+        scale: 1,
+        clearProps: "all"
       });
       
-      // Affichage de la question
+      // Affichage du contenu
       card1.innerHTML = `
-        <div class="card-content" style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-          <div class="choice-button" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3); height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
+            ${question.question}
+          </h3>
+          <div style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option A</h4>
             <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceA.text}</p>
           </div>
@@ -378,76 +380,22 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       card2.innerHTML = `
-        <div class="card-content" style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-          <div class="choice-button" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3); height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
+            ${question.question}
+          </h3>
+          <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option B</h4>
             <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceB.text}</p>
           </div>
         </div>
-      `;="font-size: 1.1rem; line-height: 1.4;">${question.choiceB.text}</p>
-          </div>
-        </div>
       `;
 
-      // Animation d'apparition synchronisée des cartes
-      const tl = gsap.timeline();
-      
-      // Phase 1: Apparition simultanée des cartes avec un effet de "dévoilement"
-      tl.to([card1, card2], {
-        duration: 0.7,
-        opacity: 1,
-        scale: 1,
-        rotationX: 0,
-        ease: "power3.out"
-      })
-      // Phase 2: Animation du contenu interne - questions
-      .to(".question-title", {
+      // Animation d'apparition simple
+      gsap.to([card1, card2], {
         duration: 0.5,
         opacity: 1,
-        y: 0,
         ease: "power2.out"
-      }, "-=0.3")
-      // Phase 3: Animation des boutons avec un effet de "bounce" subtil
-      .to(".choice-button", {
-        duration: 0.6,
-        opacity: 1,
-        y: 0,
-        ease: "back.out(1.2)",
-        stagger: 0.1
-      }, "-=0.2");
-
-      // Animation hover sur les boutons de choix (seulement si pas en animation)
-      gsap.utils.toArray(".choice-button").forEach(button => {
-        let isAnimating = false;
-        
-        button.addEventListener("mouseenter", () => {
-          if (!isAnimating) {
-            gsap.to(button, {
-              duration: 0.3,
-              scale: 1.05,
-              y: -10,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-              ease: "power2.out"
-            });
-          }
-        });
-        
-        button.addEventListener("mouseleave", () => {
-          if (!isAnimating) {
-            gsap.to(button, {
-              duration: 0.3,
-              scale: 1,
-              y: 0,
-              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-              ease: "power2.out"
-            });
-          }
-        });
-        
-        // Désactiver le hover pendant l'animation de sélection
-        button.addEventListener("click", () => {
-          isAnimating = true;
-        });
       });
 
     } else {
@@ -455,13 +403,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Traiter la réponse - transition simple
+  // Traiter la réponse
   function handleAnswer(choice) {
     const question = currentQuestions[currentQuestionIndex];
     const selectedChoice = choice === 'A' ? question.choiceA : question.choiceB;
     const selectedCard = choice === 'A' ? card1 : card2;
     
-    // Désactiver les clics pendant l'animation
+    // Désactiver les clics
     card1.style.pointerEvents = 'none';
     card2.style.pointerEvents = 'none';
     
@@ -472,10 +420,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentQuestionIndex++;
     
-    // Animation simple: feedback visuel puis transition
+    // Animation de feedback puis transition
     gsap.timeline()
-      .to(selectedCard.querySelector('.choice-button'), {
-        duration: 0.2,
+      .to(selectedCard.querySelector('div:last-child'), {
+        duration: 0.3,
         backgroundColor: "#4CAF50",
         ease: "power2.out"
       })
@@ -483,13 +431,12 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.4,
         opacity: 0,
         ease: "power2.in"
-      }, "+=0.3")
+      }, "+=0.5")
       .call(() => {
         // Réactiver les clics
         card1.style.pointerEvents = 'auto';
         card2.style.pointerEvents = 'auto';
         
-        // Afficher la question suivante
         displayQuestion();
       });
   }
@@ -516,144 +463,32 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <button onclick="location.reload()" class="gradient-button">🔄 Tester une autre catégorie</button>
-            <button onclick="showDetailedStats()" class="gradient-button">📊 Voir mes statistiques</button>
           </div>
         </div>
       `;
     }
   }
 
-  // Afficher les statistiques détaillées
-  window.showDetailedStats = function() {
-    let statsHTML = `
-      <button class="btn-finish" onclick="location.reload()">← Retour</button>
-      <div class="winner">
-        <h1>📊 Vos Statistiques Détaillées</h1>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
-    `;
-
-    // Grouper les scores par catégories
-    const statCategories = {
-      "Orientation Académique": ["statistique", "analytique", "academique", "formation"],
-      "Compétences Techniques": ["technique", "logique", "systematique", "methodique"],
-      "Créativité & Innovation": ["creatif", "innovation", "ludique", "entrepreneur"],
-      "Leadership & Social": ["leadership", "collaboratif", "social", "engagement"],
-      "Autonomie & Organisation": ["independant", "planificateur", "organise", "discipline"]
-    };
-
-    Object.entries(statCategories).forEach(([categoryName, traits]) => {
-      statsHTML += `
-        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
-          <h3 style="color: #f39c12; margin-bottom: 1rem;">${categoryName}</h3>
-      `;
-      
-      traits.forEach(trait => {
-        const score = scores[trait] || 0;
-        const percentage = Math.min((score / 9) * 100, 100); // Normalisation sur 9 points max
-        
-        if (score > 0) {
-          statsHTML += `
-            <div style="margin-bottom: 0.8rem;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-                <span style="color: white; font-size: 0.9rem; text-transform: capitalize;">${trait}</span>
-                <span style="color: white; font-weight: 600;">${score} pts</span>
-              </div>
-              <div style="background: rgba(255,255,255,0.3); border-radius: 5px; height: 6px; overflow: hidden;">
-                <div style="background: linear-gradient(90deg, #4CAF50, #45a049); height: 100%; width: ${percentage}%; border-radius: 5px; transition: width 0.5s ease;"></div>
-              </div>
-            </div>
-          `;
-        }
-      });
-      
-      statsHTML += `</div>`;
-    });
-
-    statsHTML += `
-        </div>
-        <button onclick="location.reload()" class="gradient-button">🔄 Refaire le test</button>
-      </div>
-    `;
-
-    document.body.innerHTML = statsHTML;
-  };
-
-  // Initialiser le quiz pour une catégorie avec animation d'entrée
+  // Initialiser le quiz
   function initializeQuiz() {
     const category = selectedCategory;
     currentQuestions = questionsData[category] || [];
     currentQuestionIndex = 0;
     
     if (currentQuestions.length > 0) {
-      // Animation d'entrée pour le changement de catégorie
-      gsap.timeline()
-        .to([card1, card2], {
-          duration: 0.3,
-          opacity: 0,
-          scale: 0.95,
-          rotationX: -10,
-          ease: "power2.in"
-        })
-        .call(() => {
-          displayQuestion();
-        });
-    } else {
-      const cardContainer = document.querySelector('.card-container');
-      if (cardContainer) {
-        cardContainer.innerHTML = `
-          <div class="winner">
-            <h2>Aucune question disponible pour cette catégorie</h2>
-          </div>
-        `;
-      }
+      displayQuestion();
     }
   }
 
-  // Gestion des événements de catégorie avec animation
+  // Gestion des catégories
   categoryElements.forEach(elem => {
     elem.addEventListener('click', () => {
-      // Animation de sélection de catégorie
-      gsap.to(categoryElements, {
-        duration: 0.2,
-        scale: 1,
-        opacity: 0.7,
-        ease: "power2.out"
-      });
-      
-      gsap.to(elem, {
-        duration: 0.3,
-        scale: 1.05,
-        opacity: 1,
-        ease: "back.out(1.7)"
-      });
-      
       categoryElements.forEach(e => e.classList.remove('selected'));
       elem.classList.add('selected');
       const dataCategory = elem.getAttribute('data-category');
       selectedCategory = categoryMapping[dataCategory] || dataCategory;
       initializeScores();
       initializeQuiz();
-    });
-    
-    // Animation hover pour les catégories
-    elem.addEventListener('mouseenter', () => {
-      if (!elem.classList.contains('selected')) {
-        gsap.to(elem, {
-          duration: 0.2,
-          scale: 1.03,
-          ease: "power2.out"
-        });
-      }
-    });
-    
-    elem.addEventListener('mouseleave', () => {
-      if (!elem.classList.contains('selected')) {
-        gsap.to(elem, {
-          duration: 0.2,
-          scale: 1,
-          ease: "power2.out"
-        });
-      }
     });
   });
 
@@ -663,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card2.addEventListener('click', () => handleAnswer('B'));
   }
 
-  // Initialisation simple
+  // Initialisation
   initializeScores();
   initializeQuiz();
 });
