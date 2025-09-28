@@ -29,7 +29,14 @@
   <script>
 // Système de test de personnalité pour BUT Science des Données
 document.addEventListener('DOMContentLoaded', () => {
-
+  // Mapping des catégories
+  const categoryMapping = {
+    "Matières Général": "Matières préférées",
+    "Mathématique Général": "Compétences",
+    "Programmation Général": "Profil étudiant",
+    "Anglais/Droit/Eco/Communication": "Ambition",
+    "Vos Motivations Général": "Vie étudiante"
+  };
   // Configuration des questions par thème avec vos dilemmes
   const questionsData = {
     "Matières préférées": [
