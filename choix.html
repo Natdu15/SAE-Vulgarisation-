@@ -370,10 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Affichage de la question
       card1.innerHTML = `
         <div class="card-content" style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-          <h3 class="question-title" style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4; opacity: 0; transform: translateY(30px);">
-            ${question.question}
-          </h3>
-          <div class="choice-button" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);">
+          <div class="choice-button" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3); height: 100%; display: flex; flex-direction: column; justify-content: center;">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option A</h4>
             <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceA.text}</p>
           </div>
@@ -382,12 +379,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card2.innerHTML = `
         <div class="card-content" style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-          <h3 class="question-title" style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4; opacity: 0; transform: translateY(30px);">
-            ${question.question}
-          </h3>
-          <div class="choice-button" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);">
+          <div class="choice-button" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3); height: 100%; display: flex; flex-direction: column; justify-content: center;">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option B</h4>
             <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceB.text}</p>
+          </div>
+        </div>
+      `;="font-size: 1.1rem; line-height: 1.4;">${question.choiceB.text}</p>
           </div>
         </div>
       `;
@@ -419,26 +416,37 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.1
       }, "-=0.2");
 
-      // Animation hover sur les boutons de choix
+      // Animation hover sur les boutons de choix (seulement si pas en animation)
       gsap.utils.toArray(".choice-button").forEach(button => {
+        let isAnimating = false;
+        
         button.addEventListener("mouseenter", () => {
-          gsap.to(button, {
-            duration: 0.3,
-            scale: 1.05,
-            y: -10,
-            boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-            ease: "power2.out"
-          });
+          if (!isAnimating) {
+            gsap.to(button, {
+              duration: 0.3,
+              scale: 1.05,
+              y: -10,
+              boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+              ease: "power2.out"
+            });
+          }
         });
         
         button.addEventListener("mouseleave", () => {
-          gsap.to(button, {
-            duration: 0.3,
-            scale: 1,
-            y: 0,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-            ease: "power2.out"
-          });
+          if (!isAnimating) {
+            gsap.to(button, {
+              duration: 0.3,
+              scale: 1,
+              y: 0,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+              ease: "power2.out"
+            });
+          }
+        });
+        
+        // Désactiver le hover pendant l'animation de sélection
+        button.addEventListener("click", () => {
+          isAnimating = true;
         });
       });
 
@@ -454,23 +462,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedCard = choice === 'A' ? card1 : card2;
     const otherCard = choice === 'A' ? card2 : card1;
     
-    // Désactiver les clics pendant l'animation
+    // Désactiver les clics et les hovers pendant l'animation
     card1.style.pointerEvents = 'none';
     card2.style.pointerEvents = 'none';
+    
+    // Désactiver les transitions CSS qui pourraient interférer
+    gsap.set([card1, card2], { pointerEvents: 'none' });
     
     // Animation de sélection
     gsap.timeline()
       .to(selectedCard, {
         duration: 0.4,
-        scale: 1.1,
-        z: 100,
-        boxShadow: "0 30px 60px rgba(76, 175, 80, 0.4)",
+        scale: 1.05, // Réduction du scale pour moins d'effet
+        z: 50,
+        boxShadow: "0 20px 40px rgba(76, 175, 80, 0.3)",
         ease: "power2.out"
       })
       .to(otherCard, {
         duration: 0.4,
-        scale: 0.9,
-        opacity: 0.3,
+        scale: 0.95,
+        opacity: 0.5,
         ease: "power2.out"
       }, "<")
       .to(selectedCard.querySelector('.choice-button'), {
@@ -493,11 +504,12 @@ document.addEventListener('DOMContentLoaded', () => {
         scale: 0.95,
         rotationX: 15,
         ease: "power3.in"
-      }, "+=0.3")
+      }, "+=0.2")
       .call(() => {
         // Réactiver les clics
         card1.style.pointerEvents = 'auto';
         card2.style.pointerEvents = 'auto';
+        gsap.set([card1, card2], { pointerEvents: 'auto' });
         
         // Afficher la question suivante
         displayQuestion();
