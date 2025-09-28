@@ -76,69 +76,144 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     "Mathématique Général": [
       {
-        question: "Pour un projet de développement, tu préfères :",
-        choiceA: { text: "Développer des sites web 🌐", points: { web: 3, interface: 2 } },
-        choiceB: { text: "Créer des applis mobiles 📱", points: { mobile: 3, innovation: 2 } }
+        question: "Aimes-tu analyser des chiffres pour trouver des tendances ou des modèles cachés ?",
+        choiceA: { text: "Plutôt Oui", points: { web: 3, interface: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { mobile: 3, innovation: 2 } }
       },
       {
-        question: "Entre ces deux projets créatifs, tu choisis :",
-        choiceA: { text: "Créer un Dashboard de données ⚙️", points: { visualisation: 3, analytique: 2 } },
-        choiceB: { text: "Créer un jeu vidéo 🎮", points: { ludique: 3, creatif: 2 } }
+        question: "Te sens-tu à l’aise avec les calculs de moyenne, médiane, variance, etc. ?",
+        choiceA: { text: "Plutôt Oui", points: { visualisation: 3, analytique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { ludique: 3, creatif: 2 } }
       },
       {
-        question: "Tu préfères travailler avec :",
-        choiceA: { text: "Manipuler des bases de données 🗄️", points: { donnees: 3, systematique: 2 } },
-        choiceB: { text: "Visualiser des graphiques 📊", points: { visualisation: 3, communication: 2 } }
+        question: "Es-tu intéressé(e) par les probabilités (chance qu’un événement se produise) ?",
+        choiceA: { text: "Plutôt Oui", points: { donnees: 3, systematique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { visualisation: 3, communication: 2 } }
       },
       {
-        question: "Face à un problème technique, tu préfères :",
-        choiceA: { text: "Déboguer du code 🐞", points: { technique: 3, methodique: 2 } },
-        choiceB: { text: "Faire une enquête 💡", points: { investigation: 3, curieux: 2 } }
+        question: "Aimes-tu résoudre des problèmes abstraits ou théorèmes mathématiques ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Es-tu prêt(e) à revoir ou approfondir des notions de mathématiques que tu trouves difficiles ?",
+        choiceA: { text: "Plutôt Oui", points: { logique: 3, technique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { statistique: 3, analytique: 1 } }
+      },
+      {
+        question: "Les preuves mathématiques t’intéressent-elles (montrer que quelque chose est vrai) ?",
+        choiceA: { text: "Plutôt Oui", points: { logique: 3, technique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { statistique: 3, analytique: 1 } }
+      },
+      {
+        question: "Aimes-tu travailler avec des simulations probabilistes (tirages aléatoires (lancé de dés), etc.) ?",
+        choiceA: { text: "Plutôt Oui", points: { logique: 3, technique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { statistique: 3, analytique: 1 } }
+      },
+      {
+        question: "Est-ce que l’idée de modéliser un phénomène réel par une fonction ou une distribution te passionne ?",
+        choiceA: { text: "Plutôt Oui", points: { logique: 3, technique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { statistique: 3, analytique: 1 } }
       }
     ],
     "Programmation Général": [
       {
-        question: "Pour les projets scolaires, tu préfères :",
-        choiceA: { text: "Travailler seul 🧑‍💻", points: { independant: 3, concentre: 2 } },
-        choiceB: { text: "Avancer en groupe 👥", points: { collaboratif: 3, social: 2 } }
+        question: "Aimes-tu apprendre un nouveau langage de programmation (Python, R, SQL…) même si ça te demande du temps ?",
+        choiceA: { text: "Plutôt Oui", points: { independant: 3, concentre: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { collaboratif: 3, social: 2 } }
       },
       {
-        question: "Dans une équipe de projet, tu es plutôt :",
-        choiceA: { text: "Être le leader 👑", points: { leadership: 3, decisif: 2 } },
-        choiceB: { text: "Soutenir l'équipe 🤝", points: { supportif: 3, cooperatif: 2 } }
+        question: "Es-tu curieux(se) de comprendre comment fonctionne un algorithme « sous le capot » ?",
+        choiceA: { text: "Plutôt Oui", points: { leadership: 3, decisif: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { supportif: 3, cooperatif: 2 } }
       },
       {
-        question: "Face aux imprévus, tu as tendance à :",
-        choiceA: { text: "Improviser selon la situation 🎲", points: { adaptable: 3, flexible: 2 } },
-        choiceB: { text: "Tout planifier 📅", points: { planificateur: 3, organise: 2 } }
+        question: "Penses-tu que tu bénéficieras de savoir automatiser des tâches répétitives via du code ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
       },
       {
-        question: "Pour tes études, tu préfères :",
-        choiceA: { text: "Suivre un cadre strict 📏", points: { structure: 3, discipline: 2 } },
-        choiceB: { text: "Avancer librement 🌀", points: { liberte: 3, creatif: 2 } }
+        question: "Est-ce que l’idée de manipuler des données brutes (nettoyage, transformation) t’attire ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Es-tu prêt(e) à faire face à des erreurs de programmation, des bugs, des pannes, et persévérer ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Aimes-tu travailler sur des projets qui mêlent code et logique mathématique ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Es-tu capable de comprendre des documentations techniques ou des tutoriels de code ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Te plaît‐il de visualiser des données (graphiques, diagrammes, dashboards) générés par code ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Est-ce que la performance, efficacité, optimisation de code ou algorithmes t’intéressent ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
       }
     ],
-    "Anglais/Droit/Eco": [
+    "Anglais/Droit/Eco/Communication": [
       {
-        question: "Après tes études, tu veux :",
-        choiceA: { text: "Trouver un emploi rapidement 💼", points: { pragmatique: 3, actif: 2 } },
-        choiceB: { text: "Continuer les études 🎓", points: { academique: 3, specialisation: 2 } }
+        question: "Es-tu intéressé(e) par comprendre les enjeux économiques liés aux données (coût, rentabilité, impact) ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
       },
       {
-        question: "Pour ton avenir professionnel, tu préfères :",
-        choiceA: { text: "Travailler dans une grande entreprise 🏢", points: { stabilite: 3, securite: 2 } },
-        choiceB: { text: "Créer sa propre entreprise 🚀", points: { entrepreneur: 3, innovant: 2 } }
+        question: "Est-ce que les questions éthiques autour des données (vie privée, consentement, biais) te préoccupent ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
       },
       {
-        question: "Concernant la poursuite d'études, tu préfères :",
-        choiceA: { text: "Faire un BUT/Master/École d'ingénieur 📚", points: { formation: 3, expertise: 2 } },
-        choiceB: { text: "Arrêter l'école 🏛️", points: { experience: 3, pratique: 2 } }
+        question: "As-tu envie de savoir comment la loi encadre la collecte ou l’usage des données dans ton pays (et internationalement) ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
       },
       {
-        question: "Pour ta carrière, tu veux :",
-        choiceA: { text: "Partir à l'étranger ✈️", points: { international: 3, aventurier: 2 } },
-        choiceB: { text: "Rester travailler localement 🏠", points: { local: 3, ancrage: 2 } }
-      }
+        question: "Penses-tu que les données peuvent influencer des décisions politiques ou stratégiques dans les entreprises ou la société ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Lis-tu l’anglais (articles, documentation, cours, loisirs) sans trop de difficultés ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Es-tu à l’aise de te présenter en anglais si nécessaire ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Est-ce que l’apprentissage continu via des ressources internationales (articles, blogs en anglais) t’intéresse ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Es-tu capable de raconter ton travail à un grand nombre de personnes (dans un amphi de 100 personnes environ) ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Te sens-tu à l’aise de faire des visuels clairs (graphiques, infographies) pour expliquer quelque chose ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
+      {
+        question: "Penses-tu que la communication (orale ou écrite) est aussi importante que l’analyse technique ?",
+        choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
+        choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
+      },
     ],
     "Vos Motivations Général": [
       {
