@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="images/logo-sd.png" href="images/logo-sd.png">
     <link rel="stylesheet" href="css/choix.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <title>Apprendre à mieux vous connaître</title>
     <style>
         * {
@@ -871,6 +872,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialisation
   initializeScores();
   initializeQuiz();
+});
+gsap.from(".card", {
+  duration: 1,
+  y: 50,
+  opacity: 0,
+  stagger: 0.2,
+  ease: "power2.out"
+});
+
+gsap.from("h1", {
+  duration: 1,
+  x: -100,
+  opacity: 0,
+  ease: "back.out(1.7)"
 });
     </script> 
   </body>
