@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="images/logo-sd.png" href="images/logo-sd.png">
     <link rel="stylesheet" href="css/choix.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <title>Apprendre à mieux vous connaître</title>
 </head>
 <body>
@@ -12,11 +13,11 @@
   <header>
     <h1>Apprendre à mieux vous connaître !</h1>
     <div class="categories">
-      <div class="category selected" data-category="Matières Général">Matières préférées</div>
-      <div class="category" data-category="Mathématique Général">Compétences</div>
-      <div class="category" data-category="Programmation Général">Profil étudiant</div>
-      <div class="category" data-category="Anglais/Droit/Eco/Communication">Ambition</div>
-      <div class="category" data-category="Vos Motivations Général">Vie étudiante</div>
+      <div class="category selected" data-category="Matières Général">Matières Général</div>
+      <div class="category" data-category="Mathématique Général">Mathématique Général</div>
+      <div class="category" data-category="Programmation Général">Programmation Général</div>
+      <div class="category" data-category="Anglais/Droit/Eco/Communication">Anglais/Droit/Eco/Communication</div>
+      <div class="category" data-category="Vos Motivations Général">Vos Motivations Général</div>
     </div>
     <div id="roundIndicator">Round 1</div>
   </header>
@@ -350,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // Afficher une question
+  // Afficher une question avec animations GSAP
   function displayQuestion() {
     if (currentQuestionIndex < currentQuestions.length) {
       const question = currentQuestions[currentQuestionIndex];
@@ -358,13 +359,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // Mise à jour de l'indicateur
       updateProgressIndicator();
       
+      // Animation d'entrée des cartes
+      gsap.set([card1, card2], { 
+        opacity: 0, 
+        scale: 0.8,
+        rotationY: -90
+      });
+      
       // Affichage de la question
       card1.innerHTML = `
-        <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-          <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
+        <div class="card-content" style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+          <h3 class="question-title" style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4; opacity: 0; transform: translateY(30px);">
             ${question.question}
           </h3>
-          <div style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease;">
+          <div class="choice-button" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option A</h4>
             <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceA.text}</p>
           </div>
@@ -372,44 +380,125 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       card2.innerHTML = `
-        <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-          <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
+        <div class="card-content" style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+          <h3 class="question-title" style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4; opacity: 0; transform: translateY(30px);">
             ${question.question}
           </h3>
-          <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease;">
+          <div class="choice-button" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; opacity: 0; transform: translateY(50px); box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);">
             <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Option B</h4>
             <p style="font-size: 1.1rem; line-height: 1.4;">${question.choiceB.text}</p>
           </div>
         </div>
       `;
+
+      // Animation d'apparition des cartes
+      gsap.timeline()
+        .to([card1, card2], {
+          duration: 0.8,
+          opacity: 1,
+          scale: 1,
+          rotationY: 0,
+          stagger: 0.2,
+          ease: "back.out(1.7)"
+        })
+        .to(".question-title", {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          ease: "power2.out"
+        }, "-=0.4")
+        .to(".choice-button", {
+          duration: 0.7,
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          ease: "power2.out"
+        }, "-=0.3");
+
+      // Animation hover sur les boutons de choix
+      gsap.utils.toArray(".choice-button").forEach(button => {
+        button.addEventListener("mouseenter", () => {
+          gsap.to(button, {
+            duration: 0.3,
+            scale: 1.05,
+            y: -10,
+            boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+            ease: "power2.out"
+          });
+        });
+        
+        button.addEventListener("mouseleave", () => {
+          gsap.to(button, {
+            duration: 0.3,
+            scale: 1,
+            y: 0,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            ease: "power2.out"
+          });
+        });
+      });
+
     } else {
       showResults();
     }
   }
 
-  // Traiter la réponse
+  // Traiter la réponse avec animations
   function handleAnswer(choice) {
     const question = currentQuestions[currentQuestionIndex];
     const selectedChoice = choice === 'A' ? question.choiceA : question.choiceB;
+    const selectedCard = choice === 'A' ? card1 : card2;
+    const otherCard = choice === 'A' ? card2 : card1;
     
-    // Ajouter les points au score
-    Object.entries(selectedChoice.points).forEach(([trait, points]) => {
-      scores[trait] += points;
-    });
+    // Désactiver les clics pendant l'animation
+    card1.style.pointerEvents = 'none';
+    card2.style.pointerEvents = 'none';
+    
+    // Animation de sélection
+    gsap.timeline()
+      .to(selectedCard, {
+        duration: 0.4,
+        scale: 1.1,
+        z: 100,
+        boxShadow: "0 30px 60px rgba(76, 175, 80, 0.4)",
+        ease: "power2.out"
+      })
+      .to(otherCard, {
+        duration: 0.4,
+        scale: 0.9,
+        opacity: 0.3,
+        ease: "power2.out"
+      }, "<")
+      .to(selectedCard.querySelector('.choice-button'), {
+        duration: 0.3,
+        backgroundColor: "#4CAF50",
+        ease: "power2.out"
+      }, "<")
+      .call(() => {
+        // Ajouter les points au score
+        Object.entries(selectedChoice.points).forEach(([trait, points]) => {
+          scores[trait] += points;
+        });
 
-    currentQuestionIndex++;
-    
-    // Animation de transition
-    const cardContainer = document.querySelector('.card-container');
-    if (cardContainer) {
-      cardContainer.style.opacity = '0.5';
-      setTimeout(() => {
+        currentQuestionIndex++;
+      })
+      .to([card1, card2], {
+        duration: 0.6,
+        opacity: 0,
+        scale: 0.8,
+        rotationY: 90,
+        stagger: 0.1,
+        ease: "power2.in"
+      })
+      .call(() => {
+        // Réactiver les clics
+        card1.style.pointerEvents = 'auto';
+        card2.style.pointerEvents = 'auto';
+        
+        // Afficher la question suivante
         displayQuestion();
-        cardContainer.style.opacity = '1';
-      }, 200);
-    } else {
-      displayQuestion();
-    }
+      });
   }
 
   // Afficher les résultats
@@ -424,12 +513,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <h1>🎯 Votre Profil : ${selectedCategory}</h1>
           <h2>${profile.name}</h2>
           <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; backdrop-filter: blur(10px);">
-            <p style="font-size: 1.2rem; line-height: 1.6; color: black; margin-bottom: 1.5rem;">
+            <p style="font-size: 1.2rem; line-height: 1.6; color: white; margin-bottom: 1.5rem;">
               ${profile.description}
             </p>
             <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
               <h4 style="color: #f39c12; margin-bottom: 0.5rem;">💼 Débouchés recommandés :</h4>
-              <p style="color: black; font-weight: 600;">${profile.career}</p>
+              <p style="color: white; font-weight: 600;">${profile.career}</p>
             </div>
           </div>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
@@ -496,14 +585,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.innerHTML = statsHTML;
   };
 
-  // Initialiser le quiz pour une catégorie
+  // Initialiser le quiz pour une catégorie avec animation d'entrée
   function initializeQuiz() {
     const category = selectedCategory;
     currentQuestions = questionsData[category] || [];
     currentQuestionIndex = 0;
     
     if (currentQuestions.length > 0) {
-      displayQuestion();
+      // Animation d'entrée pour le changement de catégorie
+      gsap.timeline()
+        .to([card1, card2], {
+          duration: 0.4,
+          opacity: 0,
+          scale: 0.9,
+          ease: "power2.in"
+        })
+        .call(() => {
+          displayQuestion();
+        });
     } else {
       const cardContainer = document.querySelector('.card-container');
       if (cardContainer) {
@@ -516,15 +615,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Gestion des événements de catégorie
+  // Gestion des événements de catégorie avec animation
   categoryElements.forEach(elem => {
     elem.addEventListener('click', () => {
+      // Animation de sélection de catégorie
+      gsap.to(categoryElements, {
+        duration: 0.2,
+        scale: 1,
+        opacity: 0.7,
+        ease: "power2.out"
+      });
+      
+      gsap.to(elem, {
+        duration: 0.3,
+        scale: 1.05,
+        opacity: 1,
+        ease: "back.out(1.7)"
+      });
+      
       categoryElements.forEach(e => e.classList.remove('selected'));
       elem.classList.add('selected');
       const dataCategory = elem.getAttribute('data-category');
       selectedCategory = categoryMapping[dataCategory] || dataCategory;
       initializeScores();
       initializeQuiz();
+    });
+    
+    // Animation hover pour les catégories
+    elem.addEventListener('mouseenter', () => {
+      if (!elem.classList.contains('selected')) {
+        gsap.to(elem, {
+          duration: 0.2,
+          scale: 1.03,
+          ease: "power2.out"
+        });
+      }
+    });
+    
+    elem.addEventListener('mouseleave', () => {
+      if (!elem.classList.contains('selected')) {
+        gsap.to(elem, {
+          duration: 0.2,
+          scale: 1,
+          ease: "power2.out"
+        });
+      }
     });
   });
 
@@ -534,9 +669,29 @@ document.addEventListener('DOMContentLoaded', () => {
     card2.addEventListener('click', () => handleAnswer('B'));
   }
 
-  // Initialisation
+  // Initialisation avec animation d'entrée
+  gsap.set([card1, card2], { opacity: 0, y: 50 });
+  
   initializeScores();
-  initializeQuiz();
+  
+  // Animation d'entrée initiale
+  gsap.timeline()
+    .to("header", {
+      duration: 0.8,
+      opacity: 1,
+      y: 0,
+      ease: "power2.out"
+    })
+    .call(() => {
+      initializeQuiz();
+    })
+    .to([card1, card2], {
+      duration: 0.6,
+      opacity: 1,
+      y: 0,
+      stagger: 0.1,
+      ease: "power2.out"
+    }, "-=0.2");
 });
     </script> 
   </body>
