@@ -873,20 +873,35 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeScores();
   initializeQuiz();
 });
-gsap.from(".card", {
-  duration: 1,
-  y: 50,
-  opacity: 0,
-  stagger: 0.2,
-  ease: "power2.out"
-});
+function afficherQuestion(questionIndex) {
+  const question = questions[questionIndex];
 
-gsap.from("h1", {
-  duration: 1,
-  x: -100,
-  opacity: 0,
-  ease: "back.out(1.7)"
-});
+  // Animation de sortie des anciennes cartes
+  gsap.to(".card", {
+    duration: 0.5,
+    y: 50,
+    opacity: 0,
+    stagger: 0.1,
+    ease: "power2.in",
+    onComplete: () => {
+      // Remplace le contenu APRÈS la sortie
+      document.querySelector("#card1").innerHTML = `
+        <h3>${question.optionA.title}</h3>
+        <p>${question.optionA.text}</p>
+      `;
+      document.querySelector("#card2").innerHTML = `
+        <h3>${question.optionB.title}</h3>
+        <p>${question.optionB.text}</p>
+      `;
+
+      // Animation d'entrée des nouvelles cartes
+      gsap.fromTo(".card",
+        { y: -50, opacity: 0 },
+        { duration: 0.6, y: 0, opacity: 1, stagger: 0.2, ease: "power2.out" }
+      );
+    }
+  });
+}
     </script> 
   </body>
   </html>
