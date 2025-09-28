@@ -486,13 +486,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentQuestionIndex++;
       })
+      // Transition directe vers la sortie sans revenir à la taille normale
       .to([card1, card2], {
         duration: 0.5,
         opacity: 0,
         scale: 0.95,
         rotationX: 15,
         ease: "power3.in"
-      })
+      }, "+=0.3")
       .call(() => {
         // Réactiver les clics
         card1.style.pointerEvents = 'auto';
