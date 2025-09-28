@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="images/logo-sd.png" href="images/logo-sd.png">
     <link rel="stylesheet" href="css/choix.css">
-    <title>Test de personalité</title>
+    <title>Apprendre à mieux vous connaître</title>
 </head>
 <body>
 
   <header>
     <h1>Test pour mieux vous connaître.</h1>
     <div class="categories">
-      <div class="category selected" data-category="All-Time">Matières préférées</div>
-      <div class="category" data-category="Shōnen">Compétences</div>
-      <div class="category" data-category="Shōjo">Vie étudiante</div>
-      <div class="category" data-category="Seinen">Ambition</div>
-      <div class="category" data-category="Manhwa">Profil étudiant</div>
+      <div class="category selected" data-category="Matières Général">Matières Général</div>
+      <div class="category" data-category="Mathématique Génaral">Mathématique Génaral</div>
+      <div class="category" data-category="Programmation Général">Programmation Général</div>
+      <div class="category" data-category="Anglais/Droit/Eco">Anglais/Droit/Eco</div>
+      <div class="category" data-category="Vos Motivations Général">Vos Motivations Général</div>
     </div>
     <div id="roundIndicator">Round 1</div>
   </header>
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Configuration des questions par thème avec vos dilemmes
   const questionsData = {
-    "Matières préférées": [
+    "Matières Général": [
       {
-        question: "Entre ces deux domaines mathématiques, tu préfères :",
-        choiceA: { text: "Probabilités 📊", points: { statistique: 3, analytique: 2 } },
-        choiceB: { text: "Cryptologie 🔐", points: { securite: 3, logique: 2 } }
+        question: "Es-tu intéressé(e) par les probabilités (chance qu’un événement se produise) ?",
+        choiceA: { text: "Plutôt Oui ", points: { statistique: 3, analytique: 2 } },
+        choiceB: { text: "Vraiment Pas ", points: { securite: 3, logique: 2 } }
       },
       {
         question: "Pour résoudre un problème informatique, tu préfères :",
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Cybersécurité 🤖", points: { securite: 3, protection: 2 } }
       }
     ],
-    "Compétences": [
+    "Mathématique Génaral": [
       {
         question: "Pour un projet de développement, tu préfères :",
         choiceA: { text: "Développer des sites web 🌐", points: { web: 3, interface: 2 } },
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Faire une enquête 💡", points: { investigation: 3, curieux: 2 } }
       }
     ],
-    "Profil étudiant": [
+    "Programmation Général": [
       {
         question: "Pour les projets scolaires, tu préfères :",
         choiceA: { text: "Travailler seul 🧑‍💻", points: { independant: 3, concentre: 2 } },
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Avancer librement 🌀", points: { liberte: 3, creatif: 2 } }
       }
     ],
-    "Ambition": [
+    "Anglais/Droit/Eco": [
       {
         question: "Après tes études, tu veux :",
         choiceA: { text: "Trouver un emploi rapidement 💼", points: { pragmatique: 3, actif: 2 } },
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Rester travailler localement 🏠", points: { local: 3, ancrage: 2 } }
       }
     ],
-    "Vie étudiante": [
+    "Vos Motivations Général": [
       {
         question: "Le soir après les cours, tu préfères :",
         choiceA: { text: "Participer aux soirées 🎉", points: { social: 3, festif: 2 } },
