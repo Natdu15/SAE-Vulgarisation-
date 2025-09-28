@@ -13,7 +13,7 @@
     <h1>Test pour mieux vous connaître.</h1>
     <div class="categories">
       <div class="category selected" data-category="Matières Général">Matières Général</div>
-      <div class="category" data-category="Mathématique Génaral">Mathématique Génaral</div>
+      <div class="category" data-category="Mathématique Général">Mathématique Génaral</div>
       <div class="category" data-category="Programmation Général">Programmation Général</div>
       <div class="category" data-category="Anglais/Droit/Eco">Anglais/Droit/Eco</div>
       <div class="category" data-category="Vos Motivations Général">Vos Motivations Général</div>
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         question: "Es-tu intéressé(e) par les probabilités (chance qu’un événement se produise) ?",
         choiceA: { text: "Plutôt Oui ", points: { statistique: 3, analytique: 2 } },
-        choiceB: { text: "Vraiment Pas ", points: { securite: 3, logique: 2 } }
+        choiceB: { text: "Vraiment Pas ", points: { securite: 0, analytique: 2} }
       },
       {
         question: "Pour résoudre un problème informatique, tu préfères :",
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Cybersécurité 🤖", points: { securite: 3, protection: 2 } }
       }
     ],
-    "Mathématique Génaral": [
+    "Mathématique Général": [
       {
         question: "Pour un projet de développement, tu préfères :",
         choiceA: { text: "Développer des sites web 🌐", points: { web: 3, interface: 2 } },
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Profils de personnalité par thème
   const personalityProfiles = {
-    "Matières préférées": {
+    "Matières Général": {
       "L'Analyste Statistique": {
         description: "Tu excelles dans l'analyse de données et les probabilités. Tu aimes transformer les chiffres en insights.",
         traits: ["statistique", "analytique"],
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         career: "Administrateur base de données, Data Engineer, Architecte données"
       }
     },
-    "Compétences": {
+    "Mathématique Général": {
       "Le Développeur Web/Mobile": {
         description: "Tu excelles dans la création d'interfaces et d'applications utilisateur.",
         traits: ["web", "mobile", "interface"],
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         career: "DevOps Engineer, Expert technique, Consultant IT"
       }
     },
-    "Profil étudiant": {
+    "Programmation Général": {
       "L'Indépendant Organisé": {
         description: "Tu travailles de manière autonome avec une approche structurée et planifiée.",
         traits: ["independant", "planificateur", "structure"],
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         career: "Développeur en équipe, Analyste, Consultant junior"
       }
     },
-    "Ambition": {
+    "Anglais/Droit/Eco": {
       "Le Pragmatique Stable": {
         description: "Tu vises une insertion professionnelle rapide dans un environnement sécurisé.",
         traits: ["pragmatique", "stabilite", "local"],
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         career: "Consultant freelance, Technicien expert, Entrepreneur"
       }
     },
-    "Vie étudiante": {
+    "Vos Motivations Général": {
       "Le Social Actif": {
         description: "Tu combines vie sociale épanouie et activité physique. Tu es énergique et engagé.",
         traits: ["social", "actif", "engagement"],
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Variables globales
-  let selectedCategory = "Matières préférées";
+  let selectedCategory = "Matières Général";
   let currentQuestionIndex = 0;
   let scores = {};
   let currentQuestions = [];
@@ -268,21 +268,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialiser les scores
   function initializeScores() {
     scores = {
-      // Matières
+      // Matières Général
       statistique: 0, analytique: 0, securite: 0, logique: 0, technique: 0, 
       systematique: 0, protection: 0, donnees: 0,
-      // Compétences
+      // Mathématique Général
       web: 0, interface: 0, mobile: 0, innovation: 0, visualisation: 0, 
       communication: 0, ludique: 0, creatif: 0, investigation: 0, methodique: 0,
-      // Profil étudiant
+      // Programmation Général
       independant: 0, concentre: 0, collaboratif: 0, social: 0, leadership: 0,
       decisif: 0, supportif: 0, cooperatif: 0, adaptable: 0, flexible: 0,
       planificateur: 0, organise: 0, structure: 0, discipline: 0, liberte: 0,
-      // Ambition
+      // Anglais/Droit/Eco
       pragmatique: 0, actif: 0, academique: 0, specialisation: 0, stabilite: 0,
       entrepreneur: 0, innovant: 0, formation: 0, expertise: 0, experience: 0,
       pratique: 0, international: 0, aventurier: 0, local: 0, ancrage: 0,
-      // Vie étudiante
+      // Vos Motivations Général
       festif: 0, calme: 0, studieux: 0, sante: 0, numerique: 0, detente: 0,
       travailleur: 0, ambitieux: 0, equilibre: 0, ressourcement: 0, engagement: 0,
       altruiste: 0, personnel: 0, autonome: 0
@@ -507,11 +507,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mapper les data-category aux vraies catégories
   const categoryMapping = {
-    "All-Time": "Matières préférées",
-    "Shōnen": "Compétences", 
-    "Shōjo": "Vie étudiante",
-    "Seinen": "Ambition",
-    "Manhwa": "Profil étudiant"
+    "Matières Général": "Matières Général",
+    "Mathématique Général": "Mathématique Général", 
+    "Programmation Général": "Programmation Général",
+    "Anglais/Droit/Eco": "Anglais/Droit/Eco",
+    "Vos Motivations Général": "Vos Motivations Général"
   };
 
   // Gestion des événements de catégorie
