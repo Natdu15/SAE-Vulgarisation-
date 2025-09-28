@@ -359,11 +359,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Mise à jour de l'indicateur
       updateProgressIndicator();
       
-      // Animation d'entrée des cartes
+      // Configuration initiale pour une apparition synchrone
       gsap.set([card1, card2], { 
         opacity: 0, 
-        scale: 0.8,
-        rotationY: -90
+        scale: 0.95,
+        rotationX: -15,
+        transformPerspective: 1000
       });
       
       // Affichage de la question
@@ -391,30 +392,32 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Animation d'apparition des cartes
-      gsap.timeline()
-        .to([card1, card2], {
-          duration: 0.8,
-          opacity: 1,
-          scale: 1,
-          rotationY: 0,
-          stagger: 0.2,
-          ease: "back.out(1.7)"
-        })
-        .to(".question-title", {
-          duration: 0.6,
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          ease: "power2.out"
-        }, "-=0.4")
-        .to(".choice-button", {
-          duration: 0.7,
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          ease: "power2.out"
-        }, "-=0.3");
+      // Animation d'apparition synchronisée des cartes
+      const tl = gsap.timeline();
+      
+      // Phase 1: Apparition simultanée des cartes avec un effet de "dévoilement"
+      tl.to([card1, card2], {
+        duration: 0.7,
+        opacity: 1,
+        scale: 1,
+        rotationX: 0,
+        ease: "power3.out"
+      })
+      // Phase 2: Animation du contenu interne - questions
+      .to(".question-title", {
+        duration: 0.5,
+        opacity: 1,
+        y: 0,
+        ease: "power2.out"
+      }, "-=0.3")
+      // Phase 3: Animation des boutons avec un effet de "bounce" subtil
+      .to(".choice-button", {
+        duration: 0.6,
+        opacity: 1,
+        y: 0,
+        ease: "back.out(1.2)",
+        stagger: 0.1
+      }, "-=0.2");
 
       // Animation hover sur les boutons de choix
       gsap.utils.toArray(".choice-button").forEach(button => {
@@ -484,12 +487,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentQuestionIndex++;
       })
       .to([card1, card2], {
-        duration: 0.6,
+        duration: 0.5,
         opacity: 0,
-        scale: 0.8,
-        rotationY: 90,
-        stagger: 0.1,
-        ease: "power2.in"
+        scale: 0.95,
+        rotationX: 15,
+        ease: "power3.in"
       })
       .call(() => {
         // Réactiver les clics
@@ -595,9 +597,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // Animation d'entrée pour le changement de catégorie
       gsap.timeline()
         .to([card1, card2], {
-          duration: 0.4,
+          duration: 0.3,
           opacity: 0,
-          scale: 0.9,
+          scale: 0.95,
+          rotationX: -10,
           ease: "power2.in"
         })
         .call(() => {
