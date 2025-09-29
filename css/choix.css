@@ -61,6 +61,7 @@ body.victory-background {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(24px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px;
 }
 
 .header h1 {
