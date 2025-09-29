@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="images/logo-sd.png" href="images/logo-sd.png">
+    <title>BUT Science des Données - Formation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            max-width: 900px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #764ba2;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 6rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card li {
+            padding: 0.5rem 0;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .card li::before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .timeline-year {
+            flex-shrink: 0;
+            width: 120px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            flex: 1;
+        }
+
+        .timeline-content h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .competence-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .competence-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .competence-item p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 3rem 2rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-year {
+                width: 100%;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BUT Science des Données</h1>
+            <p class="hero-subtitle">Bachelor Universitaire de Technologie</p>
+            <p>
+                Une formation en 3 ans qui forme des professionnels capables d'exploiter, 
+                analyser et valoriser les données pour accompagner la transformation numérique 
+                des organisations.
+            </p>
+            <a href="#presentation" class="cta-button">Découvrir la formation</a>
+        </div>
+    </section>
+
+    <!-- Présentation -->
+    <section id="presentation" class="section">
+        <div class="container">
+            <h2 class="section-title">Qu'est-ce que le BUT Science des Données ?</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Formation Polyvalente</h3>
+                    <p>
+                        Le BUT SD combine mathématiques, statistiques, informatique et 
+                        communication pour former des experts en analyse de données.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💼</div>
+                    <h3>Professionnalisation</h3>
+                    <p>
+                        22 à 26 semaines de stages sur les 3 ans et de nombreux projets 
+                        en lien avec des entreprises partenaires.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Débouchés Variés</h3>
+                    <p>
+                        Data Analyst, Data Scientist, Data Engineer, Business Intelligence, 
+                        ou poursuite d'études en Master ou École d'ingénieurs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programme par année -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Programme sur 3 ans</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">BUT 1</div>
+                    <div class="timeline-content">
+                        <h3>Découverte et Fondamentaux</h3>
+                        <p>
+                            Bases en mathématiques, statistiques descriptives, programmation 
+                            (Python, R), bases de données SQL, et introduction à la visualisation 
+                            de données. Premier stage de 8 à 12 semaines.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">BUT 2</div>
+                    <div class="timeline-content">
+                        <h3>Approfondissement</h3>
+                        <p>
+                            Statistiques inférentielles, machine learning, Big Data, 
+                            développement web/mobile, gestion de projets. Stage de 10 à 12 semaines.
+                            Choix d'un parcours de spécialisation.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">BUT 3</div>
+                    <div class="timeline-content">
+                        <h3>Expertise et Professionnalisation</h3>
+                        <p>
+                            Deep Learning, Intelligence Artificielle, Cloud Computing, cybersécurité 
+                            des données. Projet de fin d'études et stage long de 12 à 16 semaines. 
+                            Préparation à l'insertion professionnelle ou poursuite d'études.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Compétences Développées</h2>
+            <div class="competences-grid">
+                <div class="competence-item">
+                    <h4>Collecter des données</h4>
+                    <p>Identifier et extraire des données depuis diverses sources</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Traiter des données</h4>
+                    <p>Nettoyer, structurer et préparer les données pour l'analyse</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Analyser des données</h4>
+                    <p>Appliquer des méthodes statistiques et algorithmiques</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Visualiser des données</h4>
+                    <p>Créer des représentations graphiques pertinentes</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Communiquer</h4>
+                    <p>Présenter les résultats de manière claire et accessible</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Programmer</h4>
+                    <p>Développer des applications et des outils d'analyse</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Gérer des projets</h4>
+                    <p>Conduire des projets data de A à Z</p>
+                </div>
+                <div class="competence-item">
+                    <h4>Sécuriser les données</h4>
+                    <p>Assurer la confidentialité et l'intégrité des données</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistiques -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">La Formation en Chiffres</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Années de formation</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1800h</div>
+                    <div class="stat-label">Heures d'enseignement</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">600h</div>
+                    <div class="stat-label">Projets tutorés</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Semaines de stage</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Débouchés -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Débouchés Professionnels</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Data Analyst</h3>
+                    <p>Analyse et interprétation des données pour aider à la prise de décision</p>
+                    <ul>
+                        <li>Salaire débutant: 32k-38k €</li>
+                        <li>Forte demande</li>
+                        <li>Évolution rapide</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Data Scientist</h3>
+                    <p>Conception de modèles prédictifs et d'algorithmes d'IA</p>
+                    <ul>
+                        <li>Salaire débutant: 38k-45k €</li>
+                        <li>Métier d'avenir</li>
+                        <li>Innovation constante</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Data Engineer</h3>
+                    <p>Construction et maintenance des infrastructures de données</p>
+                    <ul>
+                        <li>Salaire débutant: 35k-42k €</li>
+                        <li>Compétences techniques</li>
+                        <li>Secteur en croissance</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>Business Intelligence</h3>
+                    <p>Création de tableaux de bord et outils d'aide à la décision</p>
+                    <ul>
+                        <li>Salaire débutant: 30k-36k €</li>
+                        <li>Transversal</li>
+                        <li>Vision stratégique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poursuite d'études -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Poursuite d'Études</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Masters Universitaires</h3>
+                    <p>
+                        Master Data Science, Intelligence Artificielle, Big Data, 
+                        Statistiques appliquées, ou domaines connexes.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏫</div>
+                    <h3>Écoles d'Ingénieurs</h3>
+                    <p>
+                        Admission sur titre dans des écoles spécialisées en data science, 
+                        informatique ou statistiques.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3>International</h3>
+                    <p>
+                        Possibilité de poursuivre à l'étranger grâce au diplôme reconnu 
+                        au niveau européen (180 ECTS).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enregistrer le plugin ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animation des cartes
+        gsap.utils.toArray('.card').forEach((card, index) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    end: "top 50%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: "power2.out"
+            });
+        });
+
+        // Animation des items de timeline
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            gsap.to(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%",
+                    end: "top 50%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: "power2.out"
+            });
+        });
+
+        // Animation des stats
+        gsap.utils.toArray('.stat-box').forEach((stat, index) => {
+            gsap.to(stat, {
+                scrollTrigger: {
+                    trigger: stat,
+                    start: "top 80%",
+                    end: "top 50%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                scale: 1,
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: "back.out(1.7)"
+            });
+        });
+
+        // Animation des compétences
+        gsap.utils.toArray('.competence-item').forEach((item, index) => {
+            gsap.to(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                    end: "top 60%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: "power2.out"
+            });
+        });
+
+        // Smooth scroll pour le bouton CTA
+        document.querySelector('.cta-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector('#presentation');
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: target,
+                ease: "power2.inOut"
+            });
+        });
+    </script>
+</body>
+</html>
