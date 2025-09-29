@@ -260,9 +260,12 @@
         }
 
         .footer {
-    border: 5px solid red;
-    min-height: 200px;
-}            
+    background: #2c3e50; /* fond sombre visible */
+    color: white;         /* texte lisible */
+    padding: 3rem 0 2rem; /* hauteur suffisante */
+    text-align: center;
+    min-height: 200px;    /* assure qu’il prend assez de place */
+}      
 
         .footer-content {
             display: grid;
