@@ -115,7 +115,23 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.15);
         }
+        .cta2-button {
+            display: inline-block;
+            background: purple;
+            color: #2c3e50;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
 
+        .cta2-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
         /* Features Section */
         .features {
             padding: 6rem 0;
