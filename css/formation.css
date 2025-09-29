@@ -118,6 +118,7 @@
         .card-icon {
             font-size: 3rem;
             margin-bottom: 1.5rem;
+            justify-content: center;
         }
 
         .card h3 {
@@ -125,12 +126,14 @@
             color: #667eea;
             margin-bottom: 1rem;
             font-weight: 700;
+            justify-content: center;
         }
 
         .card p {
             font-size: 1.1rem;
             line-height: 1.6;
             color: #555;
+            justify-content: center;
         }
 
         .card ul {
@@ -249,7 +252,8 @@
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
-.footer {
+
+        .footer {
             background: #2c3e50;
             color: white;
             padding: 3rem 0 2rem;
