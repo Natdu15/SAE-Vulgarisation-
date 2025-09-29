@@ -259,7 +259,40 @@
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
+.footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 2rem;
+            color: #95a5a6;
+        }
         .competence-item p {
             color: #666;
             font-size: 1rem;
@@ -531,6 +564,32 @@
                 </div>
             </div>
         </div>
+            <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Université Clermont Auvergne</p>
+                    <p>IUT d'Aurillac</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Formation</h3>
+                    <p>Programme détaillé</p>
+                    <p>Candidature</p>
+                    <p>Débouchés</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Ressources</h3>
+                    <p>Documentation</p>
+                    <p>Projets étudiants</p>
+                    <p>Stages et alternance</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BUT Science des Données - IUT Clermont Auvergne - Aurillac </p>
+            </div>
+        </div>
+    </footer>
     </section>
 
     <script>
