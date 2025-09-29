@@ -61,7 +61,6 @@ body.victory-background {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(24px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 10px;
 }
 
 .header h1 {
@@ -73,6 +72,8 @@ body.victory-background {
     background-clip: text;
     margin-bottom: 2.5rem;
     letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 20px
 }
 
 /* Navigation des catégories */
