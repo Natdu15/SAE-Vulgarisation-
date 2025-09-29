@@ -126,7 +126,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(120, 90, 200, 0.5);
+            box-shadow: 0 8px 25px rgba(110, 80, 220, 0.4);
         }
 
         .cta2-button:hover {
