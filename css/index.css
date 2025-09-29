@@ -118,8 +118,8 @@
         .cta2-button {
             display: inline-block;
             background: white;
-            color: #2c3e50;
-            justify-content: center;
+            color: white;
+            justify-items: center;
             padding: 1rem 3rem;
             border-radius: 50px;
             text-decoration: none;
