@@ -119,7 +119,8 @@
             display: inline-block;
             background: #1e3c72;
             color: white;
-            justify-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 1rem 3rem;
             border-radius: 50px;
             text-decoration: none;
