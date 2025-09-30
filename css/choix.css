@@ -211,7 +211,7 @@ header h1 {
 .card-option {
     padding: 1.8rem;
     border-radius: 12px;
-    color: white;
+    color:black
     font-weight: 600;
     transition: var(--transition);
     position: relative;
@@ -314,7 +314,7 @@ header h1 {
 .result-description p {
     font-size: 1.3rem;
     line-height: 1.6;
-    color: white;
+    color: black;
     margin-bottom: 2rem;
 }
 
@@ -333,7 +333,7 @@ header h1 {
 }
 
 .career-text {
-    color: white;
+    color: black;
     font-weight: 600;
     font-size: 1.1rem;
 }
@@ -422,14 +422,14 @@ header h1 {
 }
 
 .stat-name {
-    color: white;
+    color: black;
     font-size: 1rem;
     text-transform: capitalize;
     font-weight: 500;
 }
 
 .stat-points {
-    color: white;
+    color: black;
     font-weight: 700;
 }
 
