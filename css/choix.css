@@ -211,7 +211,7 @@ header h1 {
 .card-option {
     padding: 1.8rem;
     border-radius: 12px;
-    color:black
+    color:black;
     font-weight: 600;
     transition: var(--transition);
     position: relative;
