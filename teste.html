@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LANGAGE Animation</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
   <style>
     :root {
       --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -16,24 +15,6 @@
       --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
       --gradient-6: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
       --gradient-7: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      
-      --color-1: #88D498;
-      --color-2: #FFFFFF;
-      --color-3: #FF6B9D;
-      --color-4: #C780E8;
-      --color-5: #FFA94D;
-      --color-6: #9C88FF;
-      --color-7: #5FD3F3;
-      --color-8: #FFD93D;
-      
-      --letter-1: #2D3436;
-      --letter-2: #FFFFFF;
-      --letter-3: #00B894;
-      --letter-4: #0984E3;
-      --letter-5: #6C5CE7;
-      --letter-6: #FD79A8;
-      --letter-7: #FDCB6E;
-      --letter-8: #E17055;
     }
 
     * {
@@ -45,6 +26,8 @@
     body {
       overflow: hidden;
       font-family: 'Arial Black', sans-serif;
+      background: var(--gradient-1);
+      transition: background 0.5s ease;
     }
 
     #poster {
@@ -54,8 +37,6 @@
       position: relative;
       width: 100vw;
       height: 100vh;
-      background: var(--gradient-1);
-      transition: background 0.5s ease;
     }
 
     .logo-text {
@@ -63,7 +44,7 @@
       top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 3;
+      z-index: 10;
       font-size: clamp(40px, 8vw, 80px);
       font-weight: 900;
       color: rgba(255, 255, 255, 0.9);
@@ -71,82 +52,64 @@
       text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .langage-container {
+    .scene {
       position: relative;
-      width: 100vw;
-      height: 100vh;
-      max-width: 1024px;
-      max-height: 1024px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .langage {
-      position: relative;
-      z-index: 2;
       width: 100%;
       height: 100%;
-      max-width: 1024px;
-      max-height: 1024px;
-      perspective: 100vw;
-      font-family: 'Arial Black', sans-serif;
-      font-size: clamp(78px, 18vw, 240px);
-      font-weight: 900;
-      cursor: grab;
-    }
-
-    .langage:active {
-      cursor: grabbing;
-    }
-
-    .letter {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 2;
-      transform: translate(-50%, -50%);
-      height: 1lh;
-      transform-style: preserve-3d;
-      backface-visibility: hidden;
-      text-align: center;
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .sticker {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 1;
-      transform: translate(-50%, -50%);
-      width: 33.33vw;
-      height: 33.33vw;
-      max-width: min(484px, 33.33vh);
-      max-height: min(484px, 33.33vh);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(80px, 15vw, 200px);
-      font-weight: 900;
-      transition: all 0.5s ease;
     }
 
     .circle {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 0;
-      transform: translate3d(-50%, -50%, 0);
-      width: 68vw;
-      height: 68vw;
-      max-width: min(968px, 65vh);
-      max-height: min(968px, 65vh);
+      width: min(70vw, 70vh, 700px);
+      height: min(70vw, 70vh, 700px);
       border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
       box-shadow:
-        inset 0 2vh 15vw rgba(255, 255, 255, 0.5),
-        inset 0 -2vh 7.5vw rgba(0, 0, 0, 0.25),
-        0 6vh 10vw rgba(0, 0, 0, 0.15);
-      transition: background-color 0.5s ease;
+        inset 0 20px 60px rgba(255, 255, 255, 0.5),
+        inset 0 -20px 40px rgba(0, 0, 0, 0.25),
+        0 30px 50px rgba(0, 0, 0, 0.15);
+      transition: background 0.5s ease;
+      z-index: 1;
+    }
+
+    .sticker {
+      position: absolute;
+      width: min(35vw, 35vh, 350px);
+      height: min(35vw, 35vh, 350px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(60px, 12vw, 150px);
+      font-weight: 900;
+      z-index: 2;
+      transition: color 0.5s ease;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      z-index: 3;
+    }
+
+    .letter {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: clamp(60px, 15vw, 120px);
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+      transform-style: preserve-3d;
+      backface-visibility: visible;
+      user-select: none;
+      transition: color 0.5s ease;
     }
 
     .controls {
@@ -154,86 +117,59 @@
       bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 3;
+      z-index: 100;
       display: flex;
       gap: 20px;
     }
 
     .controls button {
-      all: unset;
-      display: grid;
-      place-content: center;
-      width: 60px;
-      height: 60px;
-      color: white;
-      font-size: 36px;
-      line-height: 0;
-      cursor: pointer;
-      transform: scale(1);
-      transition: transform 0.3s ease;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: white;
+      transition: all 0.3s ease;
+      font-family: inherit;
     }
 
     .controls button:hover {
-      transform: scale(1.2);
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.15);
     }
 
-    #pause .label {
+    #pause .icon {
       display: inline-block;
-      position: relative;
-      top: 3px;
-      left: -4px;
-    }
-
-    #pause .label::before {
-      content: '';
-      display: inline-block;
-      width: 0.1em;
-      height: 0.5em;
-      border-radius: 2px;
+      width: 4px;
+      height: 20px;
       background: white;
-      box-shadow: 0.2em 0 0 white;
+      border-radius: 2px;
+      box-shadow: 10px 0 0 white;
     }
 
-    #pause.paused .label {
-      left: 1px;
-    }
-
-    #pause.paused .label::before {
-      content: '';
+    #pause.paused .icon {
       width: 0;
       height: 0;
-      border-left: 0.4em solid white;
-      border-top: 0.25em solid transparent;
-      border-bottom: 0.25em solid transparent;
       background: transparent;
       box-shadow: none;
+      border-left: 16px solid white;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      margin-left: 4px;
     }
 
-    #reroll .label {
-      position: relative;
-      top: 0;
-      transform-origin: center calc(50% + 3.5px);
-    }
-
-    #reroll:hover .label {
-      animation: spin 0.6s ease-in-out forwards;
+    #reroll:hover {
+      animation: spin 0.6s ease-in-out;
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .sticker {
-        font-size: 60px;
-      }
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -241,164 +177,160 @@
   <div id="poster">
     <div class="logo-text">GSAP</div>
     
-    <div class="langage-container">
-      <div class="langage" aria-label="Rotating LANGAGE letters">
-        <div class="letter" data-letter="L">L</div>
-        <div class="letter" data-letter="A">A</div>
-        <div class="letter" data-letter="N">N</div>
-        <div class="letter" data-letter="G">G</div>
-        <div class="letter" data-letter="A">A</div>
-        <div class="letter" data-letter="G">G</div>
-        <div class="letter" data-letter="E">E</div>
+    <div class="scene">
+      <div class="circle"></div>
+      <div class="sticker">PY</div>
+      <div class="carousel">
+        <div class="letter">L</div>
+        <div class="letter">A</div>
+        <div class="letter">N</div>
+        <div class="letter">G</div>
+        <div class="letter">A</div>
+        <div class="letter">G</div>
+        <div class="letter">E</div>
       </div>
     </div>
-    
-    <div class="sticker" aria-hidden="true">PY</div>
-    <div class="circle" aria-hidden="true"></div>
-    
+
     <div class="controls">
-      <button id="pause" type="button" aria-label="Pause or Play">
-        <span class="label"></span>
+      <button id="pause">
+        <span class="icon"></span>
       </button>
-      <button id="reroll" type="button" aria-label="Randomize">
-        <span class="label">↻</span>
-      </button>
+      <button id="reroll">↻</button>
     </div>
   </div>
 
   <script>
-    gsap.registerPlugin(Draggable, InertiaPlugin);
-
-    const gradients = ['--gradient-1', '--gradient-2', '--gradient-3', '--gradient-4', '--gradient-5', '--gradient-6', '--gradient-7'];
-    const circleColors = ['--color-1', '--color-2', '--color-3', '--color-4', '--color-5', '--color-6', '--color-7', '--color-8'];
-    const letterColors = ['--letter-1', '--letter-2', '--letter-3', '--letter-4', '--letter-5', '--letter-6', '--letter-7', '--letter-8'];
-    
-    const logos = [
-      { text: 'PY', name: 'Python' },
-      { text: 'JS', name: 'JavaScript' },
-      { text: 'HTML', name: 'HTML' },
-      { text: 'CSS', name: 'CSS' },
-      { text: 'JAVA', name: 'Java' },
-      { text: 'SQL', name: 'SQL' },
-      { text: 'C++', name: 'C++' },
-      { text: 'PHP', name: 'PHP' },
-      { text: 'RUBY', name: 'Ruby' },
-      { text: 'GO', name: 'Go' },
-      { text: 'RUST', name: 'Rust' },
-      { text: 'C#', name: 'C#' }
-    ];
-
-    const poster = document.getElementById('poster');
+    const body = document.body;
     const circle = document.querySelector('.circle');
     const sticker = document.querySelector('.sticker');
-    const langage = document.querySelector('.langage');
-
-    function getCSSVarValue(varName) {
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
-    }
-
-    function getRandomItem(array) {
-      return array[Math.floor(Math.random() * array.length)];
-    }
-
-    function randomizeVisuals() {
-      const gradientValue = getCSSVarValue(getRandomItem(gradients));
-      poster.style.background = gradientValue;
-
-      circle.style.backgroundColor = getCSSVarValue(getRandomItem(circleColors));
-
-      const randomLogo = getRandomItem(logos);
-      sticker.textContent = randomLogo.text;
-      sticker.style.color = getCSSVarValue(getRandomItem(letterColors));
-
-      langage.style.color = getCSSVarValue(getRandomItem(letterColors));
-    }
-
+    const carousel = document.querySelector('.carousel');
+    const letters = document.querySelectorAll('.letter');
     const pauseBtn = document.getElementById('pause');
-    let isPaused = false;
+    const rerollBtn = document.getElementById('reroll');
 
+    const gradients = [
+      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+      'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+      'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+      'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+    ];
+
+    const circleColors = ['#88D498', '#FFFFFF', '#FF6B9D', '#C780E8', '#FFA94D', '#9C88FF', '#5FD3F3', '#FFD93D'];
+    const textColors = ['#FFFFFF', '#2D3436', '#00B894', '#0984E3', '#6C5CE7', '#FD79A8', '#FDCB6E', '#E17055'];
+    
+    const logos = ['PY', 'JS', 'HTML', 'CSS', 'JAVA', 'SQL', 'C++', 'PHP', 'RUBY', 'GO', 'RUST', 'C#', 'SWIFT', 'KOTLIN'];
+
+    function random(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function randomize() {
+      body.style.background = random(gradients);
+      circle.style.background = random(circleColors);
+      sticker.textContent = random(logos);
+      sticker.style.color = random(textColors);
+      letters.forEach(l => l.style.color = random(textColors));
+    }
+
+    // Positionnement des lettres
+    const radius = Math.min(window.innerWidth, window.innerHeight) * 0.4;
+    const angleStep = 360 / letters.length;
+    
+    letters.forEach((letter, i) => {
+      const angle = (i * angleStep) * Math.PI / 180;
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
+      letter.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+    });
+
+    // Animation de rotation
+    let rotation = 0;
+    let isRotating = true;
+    let animationId;
+
+    function animate() {
+      if (isRotating) {
+        rotation += 0.3;
+        carousel.style.transform = `rotateZ(${rotation}deg)`;
+        letters.forEach((letter, i) => {
+          letter.style.transform = `translate(${Math.cos((i * angleStep + rotation) * Math.PI / 180) * radius}px, ${Math.sin((i * angleStep + rotation) * Math.PI / 180) * radius}px) translate(-50%, -50%) rotate(${-rotation}deg)`;
+        });
+      }
+      animationId = requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Pause/Play
     pauseBtn.addEventListener('click', () => {
-      if (isPaused) {
-        spin.resume();
-        pauseBtn.classList.remove('paused');
-      } else {
-        spin.pause();
-        pauseBtn.classList.add('paused');
-      }
-      isPaused = !isPaused;
+      isRotating = !isRotating;
+      pauseBtn.classList.toggle('paused');
     });
 
-    const initialRotationOffset = -25.7;
-    const letterPos = [0, 51.43, 102.86, 154.29, 205.71, 257.14, 308.57];
-    const shapes = gsap.utils.toArray('.letter');
-    const proxy = document.createElement('div');
-    const progressWrap = gsap.utils.wrap(0, 1);
-    const wrapRotation = gsap.utils.wrap(-90, 90);
+    // Randomize
+    rerollBtn.addEventListener('click', randomize);
 
-    let screenRange = gsap.utils.mapRange(0, 2000, 500, 4500);
-    let dragDistancePerRotation = screenRange(window.innerWidth);
-    let startProgress;
+    // Drag
+    let isDragging = false;
+    let startX = 0;
+    let startRotation = 0;
 
+    carousel.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      startRotation = rotation;
+      isRotating = false;
+      pauseBtn.classList.add('paused');
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - startX;
+        rotation = startRotation + deltaX * 0.5;
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+      }
+    });
+
+    // Touch support
+    carousel.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      startRotation = rotation;
+      isRotating = false;
+      pauseBtn.classList.add('paused');
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (isDragging) {
+        const deltaX = e.touches[0].clientX - startX;
+        rotation = startRotation + deltaX * 0.5;
+      }
+    });
+
+    document.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+      }
+    });
+
+    // Responsive
     window.addEventListener('resize', () => {
-      dragDistancePerRotation = screenRange(window.innerWidth);
-      adjustRadius();
-    });
-
-    const spin = gsap.fromTo(shapes, {
-      rotationY: (i) => letterPos[i] + initialRotationOffset
-    }, {
-      rotationY: '-=360',
-      modifiers: {
-        rotationY: (value) => wrapRotation(parseFloat(value)) + 'deg'
-      },
-      duration: 10,
-      ease: 'none',
-      repeat: -1
-    });
-
-    Draggable.create(proxy, {
-      trigger: langage,
-      type: 'x',
-      inertia: true,
-      allowNativeTouchScrolling: true,
-      onPress() {
-        gsap.killTweensOf(spin);
-        spin.timeScale(0);
-        startProgress = spin.progress();
-      },
-      onDrag: updateRotation,
-      onThrowUpdate: updateRotation,
-      onRelease() {
-        if (!this.tween || !this.tween.isActive()) {
-          gsap.to(spin, { timeScale: 1, duration: 1 });
-        }
-      },
-      onThrowComplete() {
-        gsap.to(spin, { timeScale: 1, duration: 1 });
-      }
-    });
-
-    function updateRotation() {
-      const p = startProgress + (this.startX - this.x) / dragDistancePerRotation;
-      spin.progress(progressWrap(p));
-    }
-
-    function adjustRadius() {
-      const radius = Math.min(window.innerWidth * 0.5, 650, window.innerHeight * 0.43);
-      
-      gsap.set(shapes, {
-        xPercent: -50,
-        yPercent: -50,
-        x: 0,
-        y: 0,
-        transformOrigin: `50% 50% ${-radius}px`
+      const newRadius = Math.min(window.innerWidth, window.innerHeight) * 0.4;
+      letters.forEach((letter, i) => {
+        const angle = (i * angleStep + rotation) * Math.PI / 180;
+        letter.style.transform = `translate(${Math.cos(angle) * newRadius}px, ${Math.sin(angle) * newRadius}px) translate(-50%, -50%) rotate(${-rotation}deg)`;
       });
-    }
+    });
 
-    adjustRadius();
-    randomizeVisuals();
-
-    document.getElementById('reroll').addEventListener('click', randomizeVisuals);
+    randomize();
   </script>
 </body>
 </html>
