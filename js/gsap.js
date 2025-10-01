@@ -1,3 +1,4 @@
+console.log("✅ gsap.js est bien chargé !");
 gsap.registerPlugin(Draggable, InertiaPlugin);
 
 const gradients = [
