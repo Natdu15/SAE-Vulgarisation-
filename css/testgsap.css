@@ -14,7 +14,12 @@
     1.0012 68.14%, 1.0056 72.24%, 0.9981 86.66%, 1
   );
 }
-
+.circle .item img {
+  width: 50px;   /* tu ajustes la taille */
+  height: 50px;
+  border-radius: 50%; /* rond */
+  object-fit: contain;
+}
 .logo {
   display: flex;
   align-items: center;
