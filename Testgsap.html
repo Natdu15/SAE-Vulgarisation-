@@ -7,7 +7,9 @@
     <title>BUT Science des Données</title>
     <link rel="stylesheet" href="css/testgsap.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
 
 </head>
     <body>
@@ -59,7 +61,7 @@
   </div>
 </div>
     <script>
-gsap.registerPlugin(Draggable, InertiaPlugin);
+gsap.registerPlugin(Draggable);
 
 const gradients = [
   "--gradient-macha",
