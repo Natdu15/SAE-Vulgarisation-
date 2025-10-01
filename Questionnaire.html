@@ -332,11 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Vraiment Pas", points: { collaboratif: 3, social: 2 } }
       },
       {
-        question: "Es-tu curieux(se) de comprendre comment fonctionne un algorithme « sous le capot » ?",
-        choiceA: { text: "Plutôt Oui", points: { leadership: 3, decisif: 2 } },
-        choiceB: { text: "Vraiment Pas", points: { supportif: 3, cooperatif: 2 } }
-      },
-      {
         question: "Penses-tu que tu bénéficieras de savoir automatiser des tâches répétitives via du code ?",
         choiceA: { text: "Plutôt Oui", points: { technique: 3, methodique: 2 } },
         choiceB: { text: "Vraiment Pas", points: { investigation: 3, curieux: 2 } }
@@ -478,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  // Profils de personnalité par thème
+  // On fait le profil de personnalité par thème
   const personalityProfiles = {
     "Matières Général": {
       "L'Analyste Statistique": {
@@ -604,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const roundIndicator = document.getElementById('roundIndicator');
   const categoryElements = document.querySelectorAll('.category');
 
-  // Initialiser les scores
+  // Permet d'initialiser les scores
   function initializeScores() {
     scores = {
       // Matières Général
@@ -628,7 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Calculer le profil dominant pour un thème
+  // Permet le calcul du profil dominant pour un thème
   function calculateDominantProfile(category) {
     const profiles = personalityProfiles[category];
     let maxScore = 0;
@@ -664,15 +659,15 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // Afficher une question
+  // On affiche une question
   function displayQuestion() {
     if (currentQuestionIndex < currentQuestions.length) {
       const question = currentQuestions[currentQuestionIndex];
       
-      // Mise à jour de l'indicateur
+      // et on met à jour l'indicateur
       updateProgressIndicator();
       
-      // Affichage de la question
+      //Avec un affichage de la question
       card1.innerHTML = `
         <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
           <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
@@ -701,19 +696,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Traiter la réponse
+  // Puis, on doit traiter la réponse et 
   function handleAnswer(choice) {
     const question = currentQuestions[currentQuestionIndex];
     const selectedChoice = choice === 'A' ? question.choiceA : question.choiceB;
     
-    // Ajouter les points au score
+    // on ajoutera les points au score
     Object.entries(selectedChoice.points).forEach(([trait, points]) => {
       scores[trait] += points;
     });
 
     currentQuestionIndex++;
     
-    // Animation de transition
+    // Petite animation de la transition
     document.querySelector('.card-container').style.opacity = '0.5';
     setTimeout(() => {
       displayQuestion();
@@ -721,7 +716,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 200);
   }
 
-  // Afficher les résultats
+  // Affichage du résultat
   function showResults() {
     const profile = calculateDominantProfile(selectedCategory);
     
