@@ -455,117 +455,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // On fait le profil de personnalité par thème
   const personalityProfiles = {
-    "Matières Général": {
-      "L'Analyste Statistique": {
-        description: "Tu excelles dans l'analyse de données et les probabilités. Tu aimes transformer les chiffres en insights.",
-        traits: ["statistique", "analytique"],
-        career: "Data Analyst, Biostatisticien, Actuaire"
-      },
-      "L'Expert Sécurité": {
-        description: "Tu es passionné par la protection des systèmes et la cryptographie. La cybersécurité te fascine.",
-        traits: ["securite", "protection"],
-        career: "Expert cybersécurité, Consultant sécurité, Cryptographe"
-      },
-      "Le Développeur Logique": {
-        description: "Tu excelles dans la résolution algorithmique et la programmation structurée.",
-        traits: ["logique", "technique"],
-        career: "Ingénieur logiciel, Développeur backend, Architecte système"
-      },
-      "L'Organisateur de Données": {
-        description: "Tu maîtrises parfaitement la gestion et l'organisation des bases de données.",
-        traits: ["systematique", "donnees"],
-        career: "Administrateur base de données, Data Engineer, Architecte données"
-      }
+  "Matières Général": {
+    "L'Analyste de Données": {
+      description: "Tu aimes manipuler les chiffres, comprendre les probabilités et donner du sens aux données brutes.",
+      traits: ["statistique", "analytique"],
+      career: "Data Analyst, Biostatisticien, Actuaire"
     },
-    "Mathématique Général": {
-      "Le Développeur Web/Mobile": {
-        description: "Tu excelles dans la création d'interfaces et d'applications utilisateur.",
-        traits: ["web", "mobile", "interface"],
-        career: "Développeur Full-Stack, Développeur mobile, UX/UI Designer"
-      },
-      "Le Visualisateur de Données": {
-        description: "Tu sais parfaitement présenter et communiquer les données de manière claire.",
-        traits: ["visualisation", "communication"],
-        career: "Data Visualizer, Business Intelligence, Consultant BI"
-      },
-      "Le Créateur Ludique": {
-        description: "Tu combines créativité et technique pour créer des expériences engageantes.",
-        traits: ["ludique", "creatif", "innovation"],
-        career: "Game Developer, Creative Developer, Designer interactif"
-      },
-      "L'Investigateur Technique": {
-        description: "Tu excelles dans l'analyse technique et la résolution de problèmes complexes.",
-        traits: ["investigation", "technique", "methodique"],
-        career: "DevOps Engineer, Expert technique, Consultant IT"
-      }
+    "Le Gardien des Données": {
+      description: "Tu es sensible aux enjeux de sécurité et à la protection des informations. Tu veilles à ce que les données soient utilisées de manière responsable.",
+      traits: ["securite", "protection"],
+      career: "Expert cybersécurité, Data Privacy Officer, Consultant RGPD"
     },
-    "Programmation Général": {
-      "L'Indépendant Organisé": {
-        description: "Tu travailles de manière autonome avec une approche structurée et planifiée.",
-        traits: ["independant", "planificateur", "structure"],
-        career: "Consultant indépendant, Chef de projet, Entrepreneur"
-      },
-      "Le Leader Collaboratif": {
-        description: "Tu sais diriger une équipe tout en valorisant la collaboration.",
-        traits: ["leadership", "collaboratif", "decisif"],
-        career: "Manager d'équipe, Directeur technique, Product Owner"
-      },
-      "L'Adaptable Créatif": {
-        description: "Tu excelles dans l'improvisation et l'innovation face aux défis.",
-        traits: ["adaptable", "flexible", "creatif"],
-        career: "Consultant en transformation, Innovation Manager, Startup"
-      },
-      "Le Collaborateur Structuré": {
-        description: "Tu préfères travailler en équipe dans un environnement organisé.",
-        traits: ["supportif", "cooperatif", "discipline"],
-        career: "Développeur en équipe, Analyste, Consultant junior"
-      }
+    "Le Logicien Technique": {
+      description: "Tu excelles dans la programmation, les algorithmes et les tableaux de bord automatisés.",
+      traits: ["logique", "technique"],
+      career: "Data Engineer, Développeur Python/R, Ingénieur logiciel"
     },
-    "Anglais/Droit/Eco/Communication": {
-      "Le Pragmatique Stable": {
-        description: "Tu vises une insertion professionnelle rapide dans un environnement sécurisé.",
-        traits: ["pragmatique", "stabilite", "local"],
-        career: "Employé en grande entreprise, Fonctionnaire, Consultant local"
-      },
-      "L'Entrepreneur Innovant": {
-        description: "Tu veux créer ton propre projet et repousser les limites.",
-        traits: ["entrepreneur", "innovant", "international"],
-        career: "Fondateur de startup, CEO, Consultant international"
-      },
-      "L'Expert Académique": {
-        description: "Tu veux approfondir tes connaissances et devenir un spécialiste reconnu.",
-        traits: ["academique", "specialisation", "formation"],
-        career: "Chercheur, Enseignant-chercheur, Expert technique senior"
-      },
-      "L'Expérimentateur Pratique": {
-        description: "Tu préfères apprendre par l'expérience directe plutôt que par la théorie.",
-        traits: ["experience", "pratique", "aventurier"],
-        career: "Consultant freelance, Technicien expert, Entrepreneur"
-      }
-    },
-    "Vos Motivations Général": {
-      "Le Social Actif": {
-        description: "Tu combines vie sociale épanouie et activité physique. Tu es énergique et engagé.",
-        traits: ["social", "actif", "engagement"],
-        career: "Manager d'équipe, Consultant, Responsable RH"
-      },
-      "L'Équilibré Numérique": {
-        description: "Tu sais allier détente numérique et équilibre personnel.",
-        traits: ["numerique", "equilibre", "personnel"],
-        career: "Développeur, Game Designer, Consultant IT"
-      },
-      "L'Ambitieux Travailleur": {
-        description: "Tu es très motivé et n'hésites pas à t'investir pleinement dans tes projets.",
-        traits: ["travailleur", "ambitieux", "festif"],
-        career: "Entrepreneur, Directeur, Consultant senior"
-      },
-      "Le Studieux Autonome": {
-        description: "Tu privilégies le calme et l'autonomie pour développer tes projets personnels.",
-        traits: ["calme", "studieux", "autonome"],
-        career: "Chercheur, Développeur indépendant, Analyste"
-      }
+    "L’Architecte des Bases": {
+      description: "Tu aimes organiser, structurer et transformer les données pour qu’elles soient exploitables.",
+      traits: ["systematique", "donnees"],
+      career: "Data Engineer, Administrateur bases de données, Architecte Cloud"
     }
-  };
+  },
+  "Mathématique Général": {
+    "Le Détective de Modèles": {
+      description: "Tu prends plaisir à repérer des tendances cachées et à modéliser des phénomènes avec des outils mathématiques.",
+      traits: ["donnees", "systematique"],
+      career: "Statisticien, Data Scientist, Chercheur en modélisation"
+    },
+    "Le Spécialiste de la Visualisation": {
+      description: "Tu sais rendre des données complexes compréhensibles grâce à des graphiques clairs et impactants.",
+      traits: ["visualisation", "communication"],
+      career: "Data Visualizer, Business Intelligence Analyst, Consultant BI"
+    },
+    "Le Mathématicien Curieux": {
+      description: "Tu es motivé par les théorèmes, les preuves et la modélisation abstraite.",
+      traits: ["logique", "technique", "methodique"],
+      career: "Chercheur en mathématiques appliquées, Data Scientist, Actuaire"
+    },
+    "L’Explorateur Probabiliste": {
+      description: "Tu es attiré par les probabilités, les simulations et l’incertitude des phénomènes réels.",
+      traits: ["investigation", "curieux"],
+      career: "Spécialiste Machine Learning, Analyste en risques, Statisticien"
+    }
+  },
+  "Programmation Général": {
+    "Le Codeur Autonome": {
+      description: "Tu es à l’aise en programmation et tu avances de manière indépendante avec rigueur.",
+      traits: ["independant", "concentre"],
+      career: "Développeur Data, Consultant indépendant, Data Engineer"
+    },
+    "Le Débogueur Persévérant": {
+      description: "Tu n’as pas peur des bugs, tu cherches des solutions et tu progresses par essais et erreurs.",
+      traits: ["technique", "methodique"],
+      career: "Ingénieur logiciel, Développeur Python, Data Engineer"
+    },
+    "Le Visualiseur Numérique": {
+      description: "Tu aimes coder pour donner vie aux données sous forme de graphiques, dashboards et applications.",
+      traits: ["creatif", "methodique"],
+      career: "Développeur BI, Data Visualizer, Analyste Front-End Data"
+    },
+    "L’Optimiseur d’Algorithmes": {
+      description: "Tu recherches la performance, l’efficacité et l’élégance dans le code.",
+      traits: ["technique", "methodique", "logique"],
+      career: "Data Scientist, Ingénieur en IA, Optimiseur d’algorithmes"
+    }
+  },
+  "Anglais/Droit/Eco/Communication": {
+    "Le Stratège Éthique": {
+      description: "Tu comprends l’importance de l’éthique, du droit et de la réglementation autour des données.",
+      traits: ["ethique", "pragmatique", "reglementaire"],
+      career: "Juriste Data, Data Protection Officer, Consultant RGPD"
+    },
+    "Le Communicateur International": {
+      description: "Tu es à l’aise avec l’anglais et tu sais expliquer clairement les enjeux liés aux données.",
+      traits: ["communication", "international", "technique"],
+      career: "Consultant data international, Responsable communication data, Business Analyst"
+    },
+    "L’Économiste de la Data": {
+      description: "Tu analyses l’impact économique de la donnée et sa valeur stratégique pour les entreprises.",
+      traits: ["economique", "analytique"],
+      career: "Data Economist, Consultant en stratégie, Business Intelligence"
+    },
+    "Le Pédagogue de la Donnée": {
+      description: "Tu sais vulgariser et enseigner les concepts techniques à un public varié.",
+      traits: ["didactique", "communication", "pratique"],
+      career: "Formateur data, Enseignant-chercheur, Data Evangelist"
+    }
+  },
+  "Vos Motivations Général": {
+    "Le Passionné Curieux": {
+      description: "Tu es prêt à apprendre en continu et à découvrir de nouveaux domaines à travers les données.",
+      traits: ["curieux", "travailleur"],
+      career: "Data Scientist, Chercheur, Consultant data"
+    },
+    "Le Collaboratif Ambitieux": {
+      description: "Tu sais travailler seul mais aussi en équipe, avec l’envie d’aller toujours plus loin.",
+      traits: ["ambitieux", "collaboratif"],
+      career: "Chef de projet data, Product Owner, Manager BI"
+    },
+    "Le Résilient Persévérant": {
+      description: "Tu n’abandonnes pas face aux erreurs : tu analyses, corriges et recommences.",
+      traits: ["resilient", "studieux"],
+      career: "Ingénieur Machine Learning, Développeur Data, Analyste"
+    },
+    "Le Visionnaire Pratique": {
+      description: "Tu te vois évoluer dans un monde où la donnée est au cœur des décisions.",
+      traits: ["visionnaire", "pratique"],
+      career: "Consultant stratégique data, Data Strategist, Entrepreneur dans la data"
+    }
+  }
+};
+
 
   // Variables globales
   let selectedCategory = "Matières Général";
