@@ -4,7 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LANGAGE Animation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
   <style>
+    :root {
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      --gradient-6: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+      --gradient-7: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      
+      --color-1: #88D498;
+      --color-2: #FFFFFF;
+      --color-3: #FF6B9D;
+      --color-4: #C780E8;
+      --color-5: #FFA94D;
+      --color-6: #9C88FF;
+      --color-7: #5FD3F3;
+      --color-8: #FFD93D;
+      
+      --letter-1: #2D3436;
+      --letter-2: #FFFFFF;
+      --letter-3: #00B894;
+      --letter-4: #0984E3;
+      --letter-5: #6C5CE7;
+      --letter-6: #FD79A8;
+      --letter-7: #FDCB6E;
+      --letter-8: #E17055;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -12,236 +43,236 @@
     }
 
     body {
-      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Arial Black', sans-serif;
+    }
+
+    #poster {
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      font-family: 'Arial Black', sans-serif;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: var(--gradient-1);
       transition: background 0.5s ease;
     }
 
-    .background-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .background-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-    .background-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-    .background-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-    .background-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-container {
+    .logo-text {
       position: absolute;
-      width: 400px;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-
-    .logo {
-      font-size: 150px;
-      font-weight: 900;
-      opacity: 0.9;
-      transition: all 0.5s ease;
-      text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      filter: none;
-    }
-
-    .circle {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      z-index: 2;
-    }
-
-    .text-container {
-      position: absolute;
-      width: 500px;
-      height: 500px;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 3;
+      font-size: clamp(40px, 8vw, 80px);
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 8px;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .langage-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width: 1024px;
+      max-height: 1024px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .langage {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      max-width: 1024px;
+      max-height: 1024px;
+      perspective: 100vw;
+      font-family: 'Arial Black', sans-serif;
+      font-size: clamp(78px, 18vw, 240px);
+      font-weight: 900;
+      cursor: grab;
+    }
+
+    .langage:active {
+      cursor: grabbing;
     }
 
     .letter {
       position: absolute;
-      font-size: 70px;
-      font-weight: 900;
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transition: color 0.5s ease;
-      left: 50%;
       top: 50%;
-      margin-left: -35px;
-      margin-top: -35px;
-    }
-
-    .text-container.rotating .letter {
-      animation: rotateAround 10s linear infinite;
-    }
-
-    @keyframes rotateAround {
-      0% {
-        transform: rotate(0deg) translateX(280px) rotate(0deg);
-        z-index: 5;
-      }
-      25% {
-        z-index: 5;
-      }
-      50% {
-        transform: rotate(180deg) translateX(280px) rotate(-180deg);
-        z-index: 0;
-      }
-      75% {
-        z-index: 0;
-      }
-      100% {
-        transform: rotate(360deg) translateX(280px) rotate(-360deg);
-        z-index: 5;
-      }
-    }
-
-    .letter:nth-child(1) { animation-delay: 0s; }
-    .letter:nth-child(2) { animation-delay: -1.43s; }
-    .letter:nth-child(3) { animation-delay: -2.86s; }
-    .letter:nth-child(4) { animation-delay: -4.29s; }
-    .letter:nth-child(5) { animation-delay: -5.72s; }
-    .letter:nth-child(6) { animation-delay: -7.15s; }
-    .letter:nth-child(7) { animation-delay: -8.58s; }
-
-    .controls {
-      position: fixed;
-      bottom: 50px;
       left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 30px;
-      z-index: 100;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      height: 1lh;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      text-align: center;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .control-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
+    .sticker {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      width: 33.33vw;
+      height: 33.33vw;
+      max-width: min(484px, 33.33vh);
+      max-height: min(484px, 33.33vh);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
-      font-size: 24px;
-      color: white;
+      font-size: clamp(80px, 15vw, 200px);
+      font-weight: 900;
+      transition: all 0.5s ease;
     }
 
-    .control-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
+    .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 0;
+      transform: translate3d(-50%, -50%, 0);
+      width: 68vw;
+      height: 68vw;
+      max-width: min(968px, 65vh);
+      max-height: min(968px, 65vh);
+      border-radius: 50%;
+      box-shadow:
+        inset 0 2vh 15vw rgba(255, 255, 255, 0.5),
+        inset 0 -2vh 7.5vw rgba(0, 0, 0, 0.25),
+        0 6vh 10vw rgba(0, 0, 0, 0.15);
+      transition: background-color 0.5s ease;
     }
 
-    .control-btn:active {
-      transform: scale(0.95);
-    }
-
-    .pause-icon::before {
-      content: '⏸';
-    }
-
-    .play-icon::before {
-      content: '▶';
-    }
-
-    .refresh-icon::before {
-      content: '↻';
-      font-size: 32px;
-    }
-
-    .gsap-text {
+    .controls {
       position: fixed;
-      top: 40px;
+      bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 60px;
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 10px;
-      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      z-index: 100;
+      z-index: 3;
+      display: flex;
+      gap: 20px;
+    }
+
+    .controls button {
+      all: unset;
+      display: grid;
+      place-content: center;
+      width: 60px;
+      height: 60px;
+      color: white;
+      font-size: 36px;
+      line-height: 0;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .controls button:hover {
+      transform: scale(1.2);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #pause .label {
+      display: inline-block;
+      position: relative;
+      top: 3px;
+      left: -4px;
+    }
+
+    #pause .label::before {
+      content: '';
+      display: inline-block;
+      width: 0.1em;
+      height: 0.5em;
+      border-radius: 2px;
+      background: white;
+      box-shadow: 0.2em 0 0 white;
+    }
+
+    #pause.paused .label {
+      left: 1px;
+    }
+
+    #pause.paused .label::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 0.4em solid white;
+      border-top: 0.25em solid transparent;
+      border-bottom: 0.25em solid transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    #reroll .label {
+      position: relative;
+      top: 0;
+      transform-origin: center calc(50% + 3.5px);
+    }
+
+    #reroll:hover .label {
+      animation: spin 0.6s ease-in-out forwards;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     @media (max-width: 768px) {
-      .circle, .text-container, .logo-container {
-        width: 300px;
-        height: 300px;
-      }
-      .letter {
-        font-size: 50px;
-      }
-      @keyframes rotate {
-        from {
-          transform: translate(-50%, -50%) rotate(0deg) translateY(-150px) rotate(0deg);
-        }
-        to {
-          transform: translate(-50%, -50%) rotate(360deg) translateY(-150px) rotate(-360deg);
-        }
-      }
-      .logo {
-        font-size: 100px;
+      .sticker {
+        font-size: 60px;
       }
     }
   </style>
 </head>
-<body class="background-1">
-  <div class="gsap-text">GSAP</div>
-  
-  <div class="container">
-    <div class="logo-container">
-      <div class="logo" id="logo">PY</div>
+<body>
+  <div id="poster">
+    <div class="logo-text">GSAP</div>
+    
+    <div class="langage-container">
+      <div class="langage" aria-label="Rotating LANGAGE letters">
+        <div class="letter" data-letter="L">L</div>
+        <div class="letter" data-letter="A">A</div>
+        <div class="letter" data-letter="N">N</div>
+        <div class="letter" data-letter="G">G</div>
+        <div class="letter" data-letter="A">A</div>
+        <div class="letter" data-letter="G">G</div>
+        <div class="letter" data-letter="E">E</div>
+      </div>
     </div>
     
-    <div class="circle"></div>
+    <div class="sticker" aria-hidden="true">PY</div>
+    <div class="circle" aria-hidden="true"></div>
     
-    <div class="text-container rotating" id="textContainer">
-      <span class="letter">L</span>
-      <span class="letter">A</span>
-      <span class="letter">N</span>
-      <span class="letter">G</span>
-      <span class="letter">A</span>
-      <span class="letter">G</span>
-      <span class="letter">E</span>
+    <div class="controls">
+      <button id="pause" type="button" aria-label="Pause or Play">
+        <span class="label"></span>
+      </button>
+      <button id="reroll" type="button" aria-label="Randomize">
+        <span class="label">↻</span>
+      </button>
     </div>
-  </div>
-
-  <div class="controls">
-    <button class="control-btn pause-btn" id="pauseBtn">
-      <span class="pause-icon"></span>
-    </button>
-    <button class="control-btn" id="refreshBtn">
-      <span class="refresh-icon"></span>
-    </button>
   </div>
 
   <script>
-    const textContainer = document.getElementById('textContainer');
-    const pauseBtn = document.getElementById('pauseBtn');
-    const refreshBtn = document.getElementById('refreshBtn');
-    const logo = document.getElementById('logo');
-    const letters = document.querySelectorAll('.letter');
-    const body = document.body;
-    const pauseIcon = pauseBtn.querySelector('span');
+    gsap.registerPlugin(Draggable, InertiaPlugin);
 
-    let isPaused = false;
-
+    const gradients = ['--gradient-1', '--gradient-2', '--gradient-3', '--gradient-4', '--gradient-5', '--gradient-6', '--gradient-7'];
+    const circleColors = ['--color-1', '--color-2', '--color-3', '--color-4', '--color-5', '--color-6', '--color-7', '--color-8'];
+    const letterColors = ['--letter-1', '--letter-2', '--letter-3', '--letter-4', '--letter-5', '--letter-6', '--letter-7', '--letter-8'];
+    
     const logos = [
       { text: 'PY', name: 'Python' },
       { text: 'JS', name: 'JavaScript' },
@@ -252,65 +283,122 @@
       { text: 'C++', name: 'C++' },
       { text: 'PHP', name: 'PHP' },
       { text: 'RUBY', name: 'Ruby' },
-      { text: 'GO', name: 'Go' }
+      { text: 'GO', name: 'Go' },
+      { text: 'RUST', name: 'Rust' },
+      { text: 'C#', name: 'C#' }
     ];
 
-    const backgrounds = ['background-1', 'background-2', 'background-3', 'background-4', 'background-5'];
-    
-    const colors = [
-      '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', 
-      '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2',
-      '#52C41A', '#FF4757', '#00D2D3', '#FFA502'
-    ];
+    const poster = document.getElementById('poster');
+    const circle = document.querySelector('.circle');
+    const sticker = document.querySelector('.sticker');
+    const langage = document.querySelector('.langage');
 
-    let currentBg = 0;
+    function getCSSVarValue(varName) {
+      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    }
 
-    // Pause/Play
+    function getRandomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function randomizeVisuals() {
+      const gradientValue = getCSSVarValue(getRandomItem(gradients));
+      poster.style.background = gradientValue;
+
+      circle.style.backgroundColor = getCSSVarValue(getRandomItem(circleColors));
+
+      const randomLogo = getRandomItem(logos);
+      sticker.textContent = randomLogo.text;
+      sticker.style.color = getCSSVarValue(getRandomItem(letterColors));
+
+      langage.style.color = getCSSVarValue(getRandomItem(letterColors));
+    }
+
+    const pauseBtn = document.getElementById('pause');
+    let isPaused = false;
+
     pauseBtn.addEventListener('click', () => {
-      isPaused = !isPaused;
-      
       if (isPaused) {
-        textContainer.classList.remove('rotating');
-        pauseIcon.className = 'play-icon';
+        spin.resume();
+        pauseBtn.classList.remove('paused');
       } else {
-        textContainer.classList.add('rotating');
-        pauseIcon.className = 'pause-icon';
+        spin.pause();
+        pauseBtn.classList.add('paused');
+      }
+      isPaused = !isPaused;
+    });
+
+    const initialRotationOffset = -25.7;
+    const letterPos = [0, 12.86, 25.71, 38.57, 51.43, 64.29, 77.14];
+    const shapes = gsap.utils.toArray('.letter');
+    const proxy = document.createElement('div');
+    const progressWrap = gsap.utils.wrap(0, 1);
+    const wrapRotation = gsap.utils.wrap(-90, 90);
+
+    let screenRange = gsap.utils.mapRange(0, 2000, 500, 4500);
+    let dragDistancePerRotation = screenRange(window.innerWidth);
+    let startProgress;
+
+    window.addEventListener('resize', () => {
+      dragDistancePerRotation = screenRange(window.innerWidth);
+      adjustRadius();
+    });
+
+    const spin = gsap.fromTo(shapes, {
+      rotationY: (i) => letterPos[i] + initialRotationOffset
+    }, {
+      rotationY: '-=360',
+      modifiers: {
+        rotationY: (value) => wrapRotation(parseFloat(value)) + 'deg'
+      },
+      duration: 10,
+      ease: 'none',
+      repeat: -1
+    });
+
+    Draggable.create(proxy, {
+      trigger: langage,
+      type: 'x',
+      inertia: true,
+      allowNativeTouchScrolling: true,
+      onPress() {
+        gsap.killTweensOf(spin);
+        spin.timeScale(0);
+        startProgress = spin.progress();
+      },
+      onDrag: updateRotation,
+      onThrowUpdate: updateRotation,
+      onRelease() {
+        if (!this.tween || !this.tween.isActive()) {
+          gsap.to(spin, { timeScale: 1, duration: 1 });
+        }
+      },
+      onThrowComplete() {
+        gsap.to(spin, { timeScale: 1, duration: 1 });
       }
     });
 
-    // Refresh - Change tout
-    refreshBtn.addEventListener('click', () => {
-      // Changer le fond
-      body.classList.remove(...backgrounds);
-      currentBg = (currentBg + 1) % backgrounds.length;
-      body.classList.add(backgrounds[currentBg]);
+    function updateRotation() {
+      const p = startProgress + (this.startX - this.x) / dragDistancePerRotation;
+      spin.progress(progressWrap(p));
+    }
 
-      // Changer le logo
-      const randomLogo = logos[Math.floor(Math.random() * logos.length)];
-      logo.textContent = randomLogo.text;
-
-      // Changer la couleur du logo
-      const randomLogoColor = colors[Math.floor(Math.random() * colors.length)];
-      logo.style.color = randomLogoColor;
-
-      // Changer la couleur des lettres
-      const randomLetterColor = colors[Math.floor(Math.random() * colors.length)];
-      letters.forEach(letter => {
-        letter.style.color = randomLetterColor;
+    function adjustRadius() {
+      const radius = Math.min(window.innerWidth * 0.5, 650, window.innerHeight * 0.43);
+      
+      gsap.set(shapes, {
+        xPercent: -50,
+        yPercent: -50,
+        x: 0,
+        y: 0,
+        transformOrigin: `50% 50% ${-radius}px`
       });
+    }
 
-      // Animation du bouton
-      refreshBtn.style.transform = 'scale(0.8) rotate(180deg)';
-      setTimeout(() => {
-        refreshBtn.style.transform = '';
-      }, 300);
-    });
+    adjustRadius();
+    randomizeVisuals();
 
-    // Initialisation des couleurs
-    logo.style.color = '#3776ab';
-    letters.forEach(letter => {
-      letter.style.color = '#FFFFFF';
-    });
+    document.getElementById('reroll').addEventListener('click', randomizeVisuals);
   </script>
 </body>
 </html>
