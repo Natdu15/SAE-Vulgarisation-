@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUT SD - IUT Aurillac - Navigation par Étages</title>
+    <title>BUT Science des Données - IUT Aurillac</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         * {
@@ -120,7 +120,11 @@
         .room.green { background: linear-gradient(135deg, #22c55e, #16a34a); }
         .room.purple { background: linear-gradient(135deg, #a855f7, #9333ea); }
         .room.orange { background: linear-gradient(135deg, #f97316, #ea580c); }
-        .room.gray { background: linear-gradient(135deg, #6b7280, #4b5563); }
+        .room.gray { 
+            background: linear-gradient(135deg, #9ca3af, #6b7280); 
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
 
         .navigation {
             position: fixed;
@@ -173,6 +177,11 @@
             border-radius: 50%;
             background: #d1d5db;
             transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.2);
         }
 
         .progress-dot.active {
@@ -297,18 +306,6 @@
             color: #374151;
             margin-bottom: 0.75rem;
         }
-
-        .modal-placeholder ul {
-            list-style: none;
-        }
-
-        .modal-placeholder li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6b7280;
-            margin-bottom: 0.5rem;
-        }
     </style>
 </head>
 <body>
@@ -320,23 +317,23 @@
     <div class="legend">
         <h3>Légende</h3>
         <div class="legend-item">
-            <div class="legend-color blue"></div>
+            <div class="legend-color" style="background: linear-gradient(135deg, #3b82f6, #2563eb);"></div>
             <span class="legend-text">Informatique</span>
         </div>
         <div class="legend-item">
-            <div class="legend-color red"></div>
+            <div class="legend-color" style="background: linear-gradient(135deg, #ef4444, #dc2626);"></div>
             <span class="legend-text">Amphithéâtre</span>
         </div>
         <div class="legend-item">
-            <div class="legend-color green"></div>
+            <div class="legend-color" style="background: linear-gradient(135deg, #22c55e, #16a34a);"></div>
             <span class="legend-text">TD</span>
         </div>
         <div class="legend-item">
-            <div class="legend-color purple"></div>
+            <div class="legend-color" style="background: linear-gradient(135deg, #a855f7, #9333ea);"></div>
             <span class="legend-text">Bibliothèque</span>
         </div>
         <div class="legend-item">
-            <div class="legend-color orange"></div>
+            <div class="legend-color" style="background: linear-gradient(135deg, #f97316, #ea580c);"></div>
             <span class="legend-text">Self</span>
         </div>
     </div>
@@ -348,10 +345,10 @@
                 <div class="floor-content">
                     <div class="floor-title">RDC - Rez-de-chaussée</div>
                     <div class="rooms-container">
-                        <div class="room blue" style="left: 5%; top: 30%; width: 18%; height: 35%;" data-name="Salle 9" data-type="Informatique">Salle 9</div>
-                        <div class="room blue" style="left: 26%; top: 30%; width: 18%; height: 35%;" data-name="Salle 6" data-type="Informatique">Salle 6</div>
-                        <div class="room red" style="left: 47%; top: 25%; width: 22%; height: 45%;" data-name="Amphi 1" data-type="Amphithéâtre">Amphi 1</div>
-                        <div class="room red" style="left: 72%; top: 25%; width: 22%; height: 45%;" data-name="Amphi 2" data-type="Amphithéâtre">Amphi 2</div>
+                        <div class="room blue" style="left: 5%; top: 30%; width: 18%; height: 35%;" data-name="Salle 9">Salle 9</div>
+                        <div class="room blue" style="left: 26%; top: 30%; width: 18%; height: 35%;" data-name="Salle 6">Salle 6</div>
+                        <div class="room red" style="left: 47%; top: 25%; width: 22%; height: 45%;" data-name="Amphi 1">Amphi 1</div>
+                        <div class="room red" style="left: 72%; top: 25%; width: 22%; height: 45%;" data-name="Amphi 2">Amphi 2</div>
                     </div>
                 </div>
             </div>
@@ -361,11 +358,11 @@
                 <div class="floor-content">
                     <div class="floor-title">1er étage</div>
                     <div class="rooms-container">
-                        <div class="room blue" style="left: 5%; top: 30%; width: 18%; height: 35%;" data-name="Salle 19" data-type="Informatique">Salle 19</div>
-                        <div class="room gray" style="left: 26%; top: 35%; width: 12%; height: 25%; opacity: 0.3;">18</div>
-                        <div class="room gray" style="left: 40%; top: 35%; width: 12%; height: 25%; opacity: 0.3;">17</div>
-                        <div class="room gray" style="left: 54%; top: 35%; width: 12%; height: 25%; opacity: 0.3;">16</div>
-                        <div class="room blue" style="left: 72%; top: 30%; width: 18%; height: 35%;" data-name="Salle 15" data-type="Informatique">Salle 15</div>
+                        <div class="room blue" style="left: 5%; top: 30%; width: 18%; height: 35%;" data-name="Salle 19">Salle 19</div>
+                        <div class="room gray" style="left: 26%; top: 35%; width: 12%; height: 25%;">18</div>
+                        <div class="room gray" style="left: 40%; top: 35%; width: 12%; height: 25%;">17</div>
+                        <div class="room gray" style="left: 54%; top: 35%; width: 12%; height: 25%;">16</div>
+                        <div class="room blue" style="left: 72%; top: 30%; width: 18%; height: 35%;" data-name="Salle 15">Salle 15</div>
                     </div>
                 </div>
             </div>
@@ -375,13 +372,13 @@
                 <div class="floor-content">
                     <div class="floor-title">2ème étage</div>
                     <div class="rooms-container">
-                        <div class="room purple" style="left: 5%; top: 20%; width: 25%; height: 50%;" data-name="Bibliothèque" data-type="Bibliothèque">📚 Bibliothèque</div>
-                        <div class="room orange" style="left: 35%; top: 20%; width: 25%; height: 50%;" data-name="Self" data-type="Self">🍽️ Self</div>
-                        <div class="room green" style="left: 65%; top: 15%; width: 6%; height: 30%;" data-name="Salle 25" data-type="TD">25</div>
-                        <div class="room green" style="left: 72%; top: 15%; width: 6%; height: 30%;" data-name="Salle 24" data-type="TD">24</div>
-                        <div class="room green" style="left: 79%; top: 15%; width: 6%; height: 30%;" data-name="Salle 23" data-type="TD">23</div>
-                        <div class="room green" style="left: 86%; top: 15%; width: 6%; height: 30%;" data-name="Salle 22" data-type="TD">22</div>
-                        <div class="room green" style="left: 65%; top: 50%; width: 6%; height: 30%;" data-name="Salle 21" data-type="TD">21</div>
+                        <div class="room purple" style="left: 5%; top: 20%; width: 25%; height: 50%;" data-name="Bibliothèque">📚 Bibliothèque</div>
+                        <div class="room orange" style="left: 35%; top: 20%; width: 25%; height: 50%;" data-name="Self">🍽️ Self</div>
+                        <div class="room green" style="left: 65%; top: 15%; width: 6%; height: 30%;" data-name="Salle 25">25</div>
+                        <div class="room green" style="left: 72%; top: 15%; width: 6%; height: 30%;" data-name="Salle 24">24</div>
+                        <div class="room green" style="left: 79%; top: 15%; width: 6%; height: 30%;" data-name="Salle 23">23</div>
+                        <div class="room green" style="left: 86%; top: 15%; width: 6%; height: 30%;" data-name="Salle 22">22</div>
+                        <div class="room green" style="left: 65%; top: 50%; width: 6%; height: 30%;" data-name="Salle 21">21</div>
                     </div>
                 </div>
             </div>
@@ -391,10 +388,10 @@
                 <div class="floor-content">
                     <div class="floor-title">3ème étage</div>
                     <div class="rooms-container">
-                        <div class="room green" style="left: 15%; top: 25%; width: 18%; height: 40%;" data-name="Salle 30" data-type="TD">Salle 30</div>
-                        <div class="room green" style="left: 36%; top: 25%; width: 18%; height: 40%;" data-name="Salle 30bis" data-type="TD">Salle 30bis</div>
-                        <div class="room green" style="left: 57%; top: 25%; width: 18%; height: 40%;" data-name="Salle 31" data-type="TD">Salle 31</div>
-                        <div class="room green" style="left: 78%; top: 25%; width: 18%; height: 40%;" data-name="Salle 31bis" data-type="TD">Salle 31bis</div>
+                        <div class="room green" style="left: 15%; top: 25%; width: 18%; height: 40%;" data-name="Salle 30">Salle 30</div>
+                        <div class="room green" style="left: 36%; top: 25%; width: 18%; height: 40%;" data-name="Salle 30bis">Salle 30bis</div>
+                        <div class="room green" style="left: 57%; top: 25%; width: 18%; height: 40%;" data-name="Salle 31">Salle 31</div>
+                        <div class="room green" style="left: 78%; top: 25%; width: 18%; height: 40%;" data-name="Salle 31bis">Salle 31bis</div>
                     </div>
                 </div>
             </div>
@@ -405,10 +402,10 @@
         <button class="nav-btn" id="prevBtn" onclick="previousFloor()">← Précédent</button>
         <div class="progress">
             <span class="floor-label-text" id="floorLabel">RDC</span>
-            <div class="progress-dot active" data-floor="0"></div>
-            <div class="progress-dot" data-floor="1"></div>
-            <div class="progress-dot" data-floor="2"></div>
-            <div class="progress-dot" data-floor="3"></div>
+            <div class="progress-dot active" onclick="goToFloor(0)"></div>
+            <div class="progress-dot" onclick="goToFloor(1)"></div>
+            <div class="progress-dot" onclick="goToFloor(2)"></div>
+            <div class="progress-dot" onclick="goToFloor(3)"></div>
         </div>
         <button class="nav-btn" id="nextBtn" onclick="nextFloor()">Suivant →</button>
     </div>
@@ -422,16 +419,7 @@
                 </div>
                 <button class="modal-close" onclick="closeModal()">×</button>
             </div>
-            <div class="modal-placeholder">
-                <h3>Informations à venir :</h3>
-                <ul>
-                    <li><span style="color: #22c55e;">✓</span> Photos de la salle</li>
-                    <li><span style="color: #22c55e;">✓</span> Matières enseignées</li>
-                    <li><span style="color: #22c55e;">✓</span> Type de cours (CM, TD, TP)</li>
-                    <li><span style="color: #22c55e;">✓</span> Semestres concernés</li>
-                    <li><span style="color: #22c55e;">✓</span> Équipements disponibles</li>
-                </ul>
-            </div>
+            <div class="modal-placeholder" id="modalContent"></div>
         </div>
     </div>
 
@@ -447,6 +435,108 @@
         const progressDots = document.querySelectorAll('.progress-dot');
         const modal = document.getElementById('modal');
 
+        const roomDetails = {
+            'Salle 6': {
+                type: 'Salle polyvalente - CM/TD',
+                courses: [
+                    { name: 'Économie', semester: 'S1', type: 'CM/TD' },
+                    { name: 'Économie', semester: 'S2', type: 'CM/TD' },
+                    { name: 'Droit', semester: 'S1', type: 'CM/TD' },
+                    { name: 'Droit numérique', semester: 'S2', type: 'CM/TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'CM/TD' },
+                    { name: 'Statistique descriptive bivariée', semester: 'S1', type: 'CM/TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'CM/TD' },
+                    { name: 'Probabilité', semester: 'S1', type: 'CM/TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'CM/TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'CM/TD' }
+                ]
+            },
+            'Salle 9': {
+                type: 'Salle informatique - TP',
+                courses: [
+                    { name: 'Base de la programmation (Python)', semester: 'S1', type: 'TP' },
+                    { name: 'Base de la programmation 2 (Python)', semester: 'S2', type: 'TP' },
+                    { name: 'Base de données relationnelle (SQL)', semester: 'S1', type: 'TP' },
+                    { name: 'Base de données relationnelle 2 (SQL)', semester: 'S2', type: 'TP' },
+                    { name: 'Tableur et reporting', semester: 'S1', type: 'TP' },
+                    { name: 'Programmation statistique (R)', semester: 'S2', type: 'TP' }
+                ]
+            },
+            'Salle 15': {
+                type: 'Salle informatique - TP',
+                courses: [
+                    { name: 'Base de la programmation (Python)', semester: 'S1', type: 'TP' },
+                    { name: 'Base de la programmation 2 (Python)', semester: 'S2', type: 'TP' },
+                    { name: 'Base de données relationnelle (SQL)', semester: 'S1', type: 'TP' },
+                    { name: 'Base de données relationnelle 2 (SQL)', semester: 'S2', type: 'TP' },
+                    { name: 'Programmation statistique (R)', semester: 'S2', type: 'TP' },
+                    { name: 'Reporting et dataviz', semester: 'S2', type: 'TP' }
+                ]
+            },
+            'Salle 19': {
+                type: 'Salle informatique - TP/TD',
+                courses: [
+                    { name: 'Base de la programmation (Python)', semester: 'S1', type: 'TP' },
+                    { name: 'Base de la programmation 2 (Python)', semester: 'S2', type: 'TP' },
+                    { name: 'Base de données relationnelle (SQL)', semester: 'S1', type: 'TP' },
+                    { name: 'Base de données relationnelle 2 (SQL)', semester: 'S2', type: 'TP' },
+                    { name: 'Tableur et reporting', semester: 'S1', type: 'TP' },
+                    { name: 'Programmation statistique (R)', semester: 'S2', type: 'TP' },
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Reporting et dataviz', semester: 'S2', type: 'TD/TP' }
+                ]
+            },
+            'Amphi 1': {
+                type: 'Amphithéâtre - CM',
+                courses: [
+                    { name: 'Toutes les matières en Cours Magistraux', semester: 'S1 & S2', type: 'CM' }
+                ]
+            },
+            'Amphi 2': {
+                type: 'Amphithéâtre - CM',
+                courses: [
+                    { name: 'Toutes les matières en Cours Magistraux', semester: 'S1 & S2', type: 'CM' }
+                ]
+            },
+            'Salle 21': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 31bis': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Bibliothèque': {
+                type: 'Bibliothèque Universitaire',
+                description: 'Équipée d\'ordinateurs, livres sur tous les thèmes et d\'une salle pour réviser vos présentations PowerPoint. Ordinateurs à disposition pour les boursiers.',
+                courses: []
+            },
+            'Self': {
+                type: 'Restaurant Universitaire',
+                description: '🍽️ Repas à 1€ pour les boursiers, sinon 3,30€ selon un système de points (6 max).<br>• Plat : 4 à 6 points<br>• Entrée : 1 à 3 points<br>• Fromage/Dessert : 1 à 3 points',
+                courses: []
+            }
+        };
+
         function updateNavigation() {
             prevBtn.disabled = currentFloor === 0;
             nextBtn.disabled = currentFloor === totalFloors - 1;
@@ -455,6 +545,16 @@
             progressDots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentFloor);
             });
+        }
+
+        function goToFloor(floor) {
+            currentFloor = floor;
+            gsap.to(slidesWrapper, {
+                x: `-${currentFloor * 25}%`,
+                duration: 0.8,
+                ease: 'power3.inOut'
+            });
+            updateNavigation();
         }
 
         function nextFloor() {
@@ -481,13 +581,39 @@
             }
         }
 
-        // Room clicks
         document.querySelectorAll('.room:not(.gray)').forEach(room => {
             room.addEventListener('click', () => {
                 const name = room.dataset.name;
-                const type = room.dataset.type;
+                const details = roomDetails[name];
+                
+                if (!details) return;
+                
                 document.getElementById('modalTitle').textContent = name;
-                document.getElementById('modalSubtitle').textContent = type;
+                document.getElementById('modalSubtitle').textContent = details.type;
+                
+                const modalContent = document.getElementById('modalContent');
+                if (name === 'Bibliothèque' || name === 'Self') {
+                    modalContent.innerHTML = `
+                        <h3>Informations :</h3>
+                        <p style="color: #374151; line-height: 1.6; margin-top: 0.75rem;">${details.description}</p>
+                    `;
+                } else if (details.courses.length > 0) {
+                    let coursesHTML = '<h3>Matières enseignées :</h3><div style="margin-top: 1rem; max-height: 400px; overflow-y: auto;">';
+                    details.courses.forEach(course => {
+                        coursesHTML += `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: white; border-radius: 0.5rem; margin-bottom: 0.5rem; border-left: 4px solid #2563eb;">
+                                <span style="color: #374151; font-weight: 500;">${course.name}</span>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span style="background: #2563eb; color: white; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">${course.semester}</span>
+                                    <span style="background: #f3f4f6; color: #6b7280; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">${course.type}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    coursesHTML += '</div>';
+                    modalContent.innerHTML = coursesHTML;
+                }
+                
                 modal.classList.add('active');
             });
         });
@@ -500,13 +626,103 @@
             if (e.target === modal) closeModal();
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') previousFloor();
             if (e.key === 'ArrowRight') nextFloor();
+            if (e.key === 'Escape') closeModal();
         });
 
         updateNavigation();
     </script>
 </body>
-</html>
+</html>{ name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 22': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 23': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 24': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 25': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 30': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 30bis': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
+                    { name: 'Cryptographie', semester: 'S2', type: 'TD' },
+                    { name: 'Économie', semester: 'S1 & S2', type: 'TD' },
+                    { name: 'Communication', semester: 'S1 & S2', type: 'TD' }
+                ]
+            },
+            'Salle 31': {
+                type: 'Salle de TD',
+                courses: [
+                    { name: 'Probabilité', semester: 'S1', type: 'TD' },
+                    { name: 'Probabilité 2', semester: 'S2', type: 'TD' },
+                    { name: 'Statistique descriptive', semester: 'S1', type: 'TD' },
+                    { name: 'Statistique descriptive 2', semester: 'S2', type: 'TD' },
+                    { name: 'Bases de l\'algèbre', semester: 'S2', type: 'TD' },
