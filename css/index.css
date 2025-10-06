@@ -135,7 +135,7 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(110, 80, 220, 0.25);;
         }
-.bouton iut {
+.bouton-iut {
             display: inline-block;
             background: #1e3c72;
             color: white;
@@ -151,7 +151,7 @@
             margin-bottom: 40px; /* par exemple */
         }
 
-        .bouton iut:hover {
+        .bouton-iut:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(110, 80, 220, 0.25);;
         }
