@@ -336,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return dominantProfile;
   }
 
-  // Mettre à jour l'indicateur de progression
   function updateProgressIndicator() {
     const totalQuestions = currentQuestions.length;
     const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
@@ -351,23 +350,19 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // Afficher une question
   function displayQuestion() {
     if (currentQuestionIndex < currentQuestions.length) {
       const question = currentQuestions[currentQuestionIndex];
       
-      // Mise à jour de l'indicateur
       updateProgressIndicator();
       
-      // Reset des cartes à leur état initial
       gsap.set([card1, card2], { 
         opacity: 0, 
         scale: 1,
         clearProps: "all"
       });
       
-      // Affichage du contenu
-      // Affichage de la question
+
       card1.innerHTML = `
         <div style="padding: 2rem; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
           <h3 style="font-size: 1.3rem; margin-bottom: 2rem; color: #2c3e50; line-height: 1.4;">
@@ -392,12 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Animation d'apparition simple
-      gsap.to([card1, card2], {
-        duration: 0.5,
-        opacity: 1,
-        ease: "power2.out"
-      });
+
 
     } else {
       showResults();
@@ -414,27 +404,24 @@ document.addEventListener('DOMContentLoaded', () => {
     card1.style.pointerEvents = 'none';
     card2.style.pointerEvents = 'none';
     
-    // Ajouter les points au score
     Object.entries(selectedChoice.points).forEach(([trait, points]) => {
       scores[trait] += points;
     });
 
     currentQuestionIndex++;
     
-    // Animation de feedback puis transition
     gsap.timeline()
       .to(selectedCard.querySelector('div:last-child'), {
-        duration: 0.3,
+        duration: 0.2,
         backgroundColor: "#4CAF50",
         ease: "power2.out"
       })
       .to([card1, card2], {
-        duration: 0.4,
+        duration: 0.2,
         opacity: 0,
         ease: "power2.in"
-      }, "+=0.5")
+      }, "+=0.3")
       .call(() => {
-        // Réactiver les clics
         card1.style.pointerEvents = 'auto';
         card2.style.pointerEvents = 'auto';
         
@@ -442,7 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // Afficher les résultats
   function showResults() {
     const profile = calculateDominantProfile(selectedCategory);
     
@@ -470,7 +456,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initialiser le quiz
   function initializeQuiz() {
     const category = selectedCategory;
     currentQuestions = questionsData[category] || [];
@@ -481,7 +466,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Gestion des catégories
   categoryElements.forEach(elem => {
     elem.addEventListener('click', () => {
       categoryElements.forEach(e => e.classList.remove('selected'));
@@ -493,13 +477,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Gestion des clics sur les cartes
   if (card1 && card2) {
     card1.addEventListener('click', () => handleAnswer('A'));
     card2.addEventListener('click', () => handleAnswer('B'));
   }
 
-  // Initialisation
   initializeScores();
   initializeQuiz();
 });
