@@ -11,7 +11,7 @@ const modal = document.getElementById('modal');
 
 const roomDetails = {
     'Salle 6': {
-        type: 'Salle polyvalente - Cours et TD',
+        type: 'Salle de TD',
         courses: [
             { name: 'Économie', semester: 'S1', type: 'Cours/TD' },
             { name: 'Économie', semester: 'S2', type: 'Cours/TD' },
