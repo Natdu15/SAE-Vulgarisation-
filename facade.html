@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUT Science des Données - IUT Aurillac</title>
+    <title>Visite Virtuelle - IUT Aurillac</title>
     <link rel="stylesheet" href="css/facade.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 </head>
 <body>
     <div class="header">
-        <h1>BUT Science des Données - IUT Aurillac</h1>
-        <p>Campus Simone Veil - Naviguez entre les étages</p>
+        <h1>Visite Virtuelle de l'IUT d'Aurillac</h1>
+        <p>Campus Simone Veil - Balade-toi dans les étages !</p>
     </div>
 
     <div class="legend">
-        <h3>Légende</h3>
+        <h3>Code couleur</h3>
         <div class="legend-item">
             <div class="legend-color" style="background: linear-gradient(135deg, #3b82f6, #2563eb);"></div>
-            <span class="legend-text">Informatique</span>
+            <span class="legend-text">Salles info (avec ordi)</span>
         </div>
         <div class="legend-item">
             <div class="legend-color" style="background: linear-gradient(135deg, #ef4444, #dc2626);"></div>
-            <span class="legend-text">Amphithéâtre</span>
+            <span class="legend-text">Amphi (cours magistraux)</span>
         </div>
         <div class="legend-item">
             <div class="legend-color" style="background: linear-gradient(135deg, #22c55e, #16a34a);"></div>
-            <span class="legend-text">TD</span>
+            <span class="legend-text">Salles de TD</span>
         </div>
         <div class="legend-item">
             <div class="legend-color" style="background: linear-gradient(135deg, #a855f7, #9333ea);"></div>
@@ -34,7 +34,7 @@
         </div>
         <div class="legend-item">
             <div class="legend-color" style="background: linear-gradient(135deg, #f97316, #ea580c);"></div>
-            <span class="legend-text">Self</span>
+            <span class="legend-text">Resto U</span>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
             <!-- ÉTAGE 1/4 - RDC -->
             <div class="slide">
                 <div class="floor-content">
-                    <div class="floor-title">RDC - Rez-de-chaussée</div>
+                    <div class="floor-title">Rez-de-chaussée</div>
                     <div class="rooms-container">
                         <div class="room blue" style="left: 5%; top: 30%; width: 18%; height: 35%;" data-name="Salle 9">Salle 9</div>
                         <div class="room blue" style="left: 26%; top: 30%; width: 18%; height: 35%;" data-name="Salle 6">Salle 6</div>
@@ -73,7 +73,7 @@
                     <div class="floor-title">2ème étage</div>
                     <div class="rooms-container">
                         <div class="room purple" style="left: 5%; top: 20%; width: 25%; height: 50%;" data-name="Bibliothèque">📚 Bibliothèque</div>
-                        <div class="room orange" style="left: 35%; top: 20%; width: 25%; height: 50%;" data-name="Self">🍽️ Self</div>
+                        <div class="room orange" style="left: 35%; top: 20%; width: 25%; height: 50%;" data-name="Self">🍽️ Resto U</div>
                         <div class="room green" style="left: 65%; top: 15%; width: 6%; height: 30%;" data-name="Salle 25">25</div>
                         <div class="room green" style="left: 72%; top: 15%; width: 6%; height: 30%;" data-name="Salle 24">24</div>
                         <div class="room green" style="left: 79%; top: 15%; width: 6%; height: 30%;" data-name="Salle 23">23</div>
@@ -99,15 +99,15 @@
     </div>
 
     <div class="navigation">
-        <button class="nav-btn" id="prevBtn" onclick="previousFloor()">← Précédent</button>
+        <button class="nav-btn" id="prevBtn" onclick="previousFloor()">← Étage précédent</button>
         <div class="progress">
-            <span class="floor-label-text" id="floorLabel">RDC</span>
+            <span class="floor-label-text" id="floorLabel">Rez-de-chaussée</span>
             <div class="progress-dot active" onclick="goToFloor(0)"></div>
             <div class="progress-dot" onclick="goToFloor(1)"></div>
             <div class="progress-dot" onclick="goToFloor(2)"></div>
             <div class="progress-dot" onclick="goToFloor(3)"></div>
         </div>
-        <button class="nav-btn" id="nextBtn" onclick="nextFloor()">Suivant →</button>
+        <button class="nav-btn" id="nextBtn" onclick="nextFloor()">Étage suivant →</button>
     </div>
 
     <div class="modal" id="modal">
@@ -123,6 +123,6 @@
         </div>
     </div>
 
-    <script src= "js/facade.js" defer></script>
+    <script src="js/facade.js" defer></script>
 </body>
 </html>
