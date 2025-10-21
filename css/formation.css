@@ -258,6 +258,9 @@
             font-size: 1rem;
             line-height: 1.5;
         }
+        .a{
+            color: black
+        }
 
         .footer {
             background: #2c3e50;
