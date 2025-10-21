@@ -287,10 +287,12 @@
             color: #bdc3c7;
             text-decoration: none;
             line-height: 1.6;
+            display: block;
         }
 
         .footer-section a:hover {
             color: white;
+            text-decoration: underline;
         }
 
         .footer-bottom {
