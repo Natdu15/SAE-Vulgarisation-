@@ -3,66 +3,531 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="images/logo-sd.png" href="images/logo-sd.png">
-    <title>BUT Science des Données - C'est quoi ? C'est pour qui ?</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>BUT Science des Données - Découvre ta voie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header avec animation */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.8s ease-out;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both, pulse 2s ease-in-out 2s infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            animation: fadeInScale 0.8s ease-out both;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: spin 0.6s ease-in-out;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta2-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 2rem auto;
+            display: block;
+            text-align: center;
+            max-width: 400px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta2-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        .about, .iut {
+            padding: 5rem 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .iut {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            animation: popIn 0.6s ease-out both;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .nav-links { gap: 1rem; }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="logo" class="logo">BUT Science des Données</a>
+    <header>
+        <nav>
+            <a href="#" class="logo">🚀 BUT Science des Données</a>
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="formation.html">La formation</a></li>
+                <li><a href="formation.html">Formation</a></li>
                 <li><a href="choix.html">Teste-toi !</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero" id="accueil">
+    <section class="hero">
         <div class="hero-content">
             <h1>La Science des Données, c'est fait pour toi ?</h1>
-            <p class="subtitle">Passe notre test fun pour savoir si cette formation te correspond ! Découvre tes points forts et les métiers qui pourraient te plaire.</p>
+            <p>Découvre en quelques minutes si cette formation correspond à ta personnalité et tes ambitions !</p>
             <a href="choix.html" class="cta-button">Je fais le test 🚀</a>
         </div>
     </section>
 
-    <section class="features">
+    <section class="features reveal">
         <div class="container">
             <h2 class="section-title">Pourquoi faire ce test ?</h2>
             <p class="section-subtitle">En quelques minutes, tu vas mieux te connaître !</p>
             
             <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🎓</div>
                     <h3>Ton profil d'étudiant</h3>
                     <p>Es-tu plutôt geek, créatif ou détective numérique ? Découvre comment tu t'épanouirais dans cette formation.</p>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
                     <h3>Tes super-pouvoirs</h3>
-                    <p>Tu préfères coder, fouiller dans les chiffres, protéger les données ou créer des graphiques stylés ? On t'aide à y voir clair !</p>
+                    <p>Tu préfères coder, fouiller dans les chiffres, protéger les données ou créer des graphiques stylés ?</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
                     <h3>Ton futur job</h3>
                     <p>Explore les métiers qui matchent avec ta personnalité : data analyst, développeur, expert en cybersécurité...</p>
                 </div>
             </div>
+            <a href="Questionnaire.html" class="cta2-button">C'est parti pour le quiz ! 🎯</a>
         </div>
-        <a href="Questionnaire.html" class="cta2-button" style="text-align: center;">C'est parti pour le quiz ! 🎯</a> 
     </section>
 
-    <section class="about" id="formation">
+    <section class="about reveal">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
@@ -74,28 +539,28 @@
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Science des données">
                 </div>
-                <a href="formation.html" class="cta2-button">En savoir plus sur la formation 📚</a>
             </div>
+            <a href="formation.html" class="cta2-button">En savoir plus sur la formation 📚</a>
+        </div>
     </section>
     
-    <section class="iut">
+    <section class="iut reveal">
         <div class="container">
             <div class="about-content">
+                <div class="about-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Campus_Simone-Veil_d%27Aurillac._Vue_g%C3%A9n%C3%A9rale.jpg/1280px-Campus_Simone-Veil_d%27Aurillac._Vue_g%C3%A9n%C3%A9rale.jpg" alt="IUT Aurillac">
+                </div>
                 <div class="about-text">
                     <h2>L'IUT d'Aurillac, c'est où ?</h2>
                     <p>L'IUT se trouve à Aurillac, dans le Cantal (15), en pleine région Auvergne-Rhône-Alpes. Montagnes, nature et fromage à volonté !</p>
                     <p>La formation existe depuis 2019 et c'est LA SEULE en France à proposer une spécialité cybersécurité. Plutôt classe, non ?</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Campus_Simone-Veil_d%27Aurillac._Vue_g%C3%A9n%C3%A9rale.jpg/1280px-Campus_Simone-Veil_d%27Aurillac._Vue_g%C3%A9n%C3%A9rale.jpg" alt="IUT Aurillac">
-                </div>
-                <a href="facade.html" class="cta2-button bouton-iut">Visite virtuelle de l'IUT 🏫</a>
-                
             </div>
+            <a href="facade.html" class="cta2-button">Visite virtuelle de l'IUT 🏫</a>
         </div>
     </section>
 
-    <section class="stats">
+    <section class="stats reveal">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -107,15 +572,14 @@
                     <p>trouvent un job après le diplôme</p>
                 </div>
                 <div class="stat-item">
-                    <h3>+50 métiers</h3>
-                    <p>possibles à la sortie</p>
+                    <h3>+50</h3>
+                    <p>métiers possibles à la sortie</p>
                 </div>
             </div>
         </div>
-        
     </section>
 
-    <footer class="footer" id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -141,6 +605,41 @@
             </div>
         </div>
     </footer>
-<script src="js/index.js" defer></script> 
+
+    <script>
+        // Intersection Observer pour les animations au scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // Animation des cartes au hover
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) rotate(3deg)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotate(0)';
+            });
+        });
+
+        // Parallax effet léger sur le hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
 </body>
 </html>
