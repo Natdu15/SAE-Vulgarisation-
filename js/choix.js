@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         choiceB: { text: "Créer un jeu vidéo 🎮", points: { ludique: 3, creatif: 2 } }
       },
       {
-        question: "Tu préfères travailler avec :",
-        choiceA: { text: "Manipuler des bases de données 🗄️", points: { donnees: 3, systematique: 2 } },
+        question: "Tu préfères quoi entre :",
+        choiceA: { text: "Manipuler des bases de données (organisation et de structuration des données afin de faciliter leur interprétation) 🗄️", points: { donnees: 3, systematique: 2 } },
         choiceB: { text: "Visualiser des graphiques 📊", points: { visualisation: 3, communication: 2 } }
       },
       {
         question: "Face à un problème technique, tu préfères :",
-        choiceA: { text: "Déboguer du code 🐞", points: { technique: 3, methodique: 2 } },
+        choiceA: { text: "Déboguer du code (corriger du code) 🐞", points: { technique: 3, methodique: 2 } },
         choiceB: { text: "Faire une enquête 💡", points: { investigation: 3, curieux: 2 } }
       }
     ],
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       {
         question: "Dans une équipe de projet, tu es plutôt :",
-        choiceA: { text: "Être le leader 👑", points: { leadership: 3, decisif: 2 } },
+        choiceA: { text: "Leader 👑", points: { leadership: 3, decisif: 2 } },
         choiceB: { text: "Soutenir l'équipe 🤝", points: { supportif: 3, cooperatif: 2 } }
       },
       {
@@ -79,17 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         question: "Pour ton avenir professionnel, tu préfères :",
         choiceA: { text: "Travailler dans une grande entreprise 🏢", points: { stabilite: 3, securite: 2 } },
-        choiceB: { text: "Créer sa propre entreprise 🚀", points: { entrepreneur: 3, innovant: 2 } }
+        choiceB: { text: "Créer ta propre entreprise 🚀", points: { entrepreneur: 3, innovant: 2 } }
       },
       {
         question: "Concernant la poursuite d'études, tu préfères :",
         choiceA: { text: "Faire un BUT/Master/École d'ingénieur 📚", points: { formation: 3, expertise: 2 } },
-        choiceB: { text: "Arrêter l'école 🏛️", points: { experience: 3, pratique: 2 } }
+        choiceB: { text: "Rentrer dans le monde professionel 🏛️", points: { experience: 3, pratique: 2 } }
       },
       {
         question: "Pour ta carrière, tu veux :",
         choiceA: { text: "Partir à l'étranger ✈️", points: { international: 3, aventurier: 2 } },
-        choiceB: { text: "Rester travailler localement 🏠", points: { local: 3, ancrage: 2 } }
+        choiceB: { text: "Rester en France 🏠", points: { local: 3, ancrage: 2 } }
       }
     ],
     "Vie étudiante": [
