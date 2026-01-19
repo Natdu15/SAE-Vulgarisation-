@@ -121,44 +121,84 @@ document.addEventListener('DOMContentLoaded', () => {
       "L'Analyste Statistique": {
         description: "Tu excelles dans l'analyse de données et les probabilités. Tu aimes transformer les chiffres en données pour évoquer des tendances.",
         traits: ["statistique", "analytique"],
-        career: "Data Analyst, Biostatisticien, Actuaire"
+        career: "Data Analyst, Biostatisticien, Actuaire",
+        conseils: [
+          "Développe tes compétences en Python et R pour l'analyse de données.",
+          "Familiarise-toi avec les outils de visualisation comme Tableau ou Power BI.",
+          "Reste curieux des dernières tendances en machine learning et statistiques."
+        ]
       },
       "L'Expert Sécurité": {
         description: "Tu es passionné par la protection des systèmes et la cryptographie. La cybersécurité te fascine.",
         traits: ["securite", "protection"],
-        career: "Expert cybersécurité, Consultant sécurité, Cryptographe"
+        career: "Expert cybersécurité, Consultant sécurité, Cryptographe",
+        conseils: [
+          "Obtiens des certifications reconnues comme CEH, CISSP ou Security+.",
+          "Pratique sur des plateformes comme HackTheBox ou TryHackMe.",
+          "Suis l'actualité des vulnérabilités et des nouvelles menaces."
+        ]
       },
       "Le Développeur Logique": {
         description: "Tu excelles dans la résolution algorithmique et la programmation structurée.",
         traits: ["logique", "technique"],
-        career: "Ingénieur logiciel, Développeur backend, Architecte système"
+        career: "Ingénieur logiciel, Développeur backend, Architecte système",
+        conseils: [
+          "Entraîne-toi régulièrement sur des plateformes comme LeetCode ou CodinGame.",
+          "Maîtrise les principes SOLID et les design patterns.",
+          "Apprends plusieurs langages pour élargir ta vision de la programmation."
+        ]
       },
       "L'Organisateur de Données": {
         description: "Tu maîtrises parfaitement la gestion et l'organisation des bases de données.",
         traits: ["systematique", "donnees"],
-        career: "Administrateur base de données, Data Engineer, Architecte données"
+        career: "Administrateur base de données, Data Engineer, Architecte données",
+        conseils: [
+          "Maîtrise SQL et les systèmes de gestion de bases de données (PostgreSQL, MongoDB).",
+          "Apprends les principes de modélisation et normalisation des données.",
+          "Intéresse-toi aux architectures big data et au cloud computing."
+        ]
       }
     },
     "Compétences": {
       "Le Développeur Web/Mobile": {
         description: "Tu excelles dans la création d'interfaces et d'applications utilisateur.",
         traits: ["web", "mobile", "interface"],
-        career: "Développeur Full-Stack, Développeur mobile, UX/UI Designer"
+        career: "Développeur Full-Stack, Développeur mobile, UX/UI Designer",
+        conseils: [
+          "Maîtrise les frameworks modernes comme React, Vue.js ou Flutter.",
+          "Apprends les principes de responsive design et d'accessibilité.",
+          "Crée un portfolio en ligne pour montrer tes projets."
+        ]
       },
       "Le Visualisateur de Données": {
         description: "Tu sais parfaitement présenter et communiquer les données de manière claire et précise.",
         traits: ["visualisation", "communication"],
-        career: "Data Visualizer, Business Intelligence, Consultant BI"
+        career: "Data Visualizer, Business Intelligence, Consultant BI",
+        conseils: [
+          "Maîtrise des outils comme Tableau, Power BI ou D3.js.",
+          "Développe ta capacité à raconter des histoires avec les données (storytelling).",
+          "Étudie les principes de design graphique et de perception visuelle."
+        ]
       },
       "Le Créateur Ludique": {
         description: "Tu combines créativité et technique pour créer des expériences engageantes.",
         traits: ["ludique", "creatif", "innovation"],
-        career: "Game Developer, Creative Developer, Designer interactif"
+        career: "Game Developer, Creative Developer, Designer interactif",
+        conseils: [
+          "Apprends Unity ou Unreal Engine pour le développement de jeux.",
+          "Participe à des game jams pour développer ta créativité sous contrainte.",
+          "Étudie le game design et la psychologie du joueur."
+        ]
       },
       "L'Investigateur Technique": {
         description: "Tu excelles dans l'analyse technique et la résolution de problèmes complexes.",
         traits: ["investigation", "technique", "methodique"],
-        career: "DevOps Engineer, Expert technique, Consultant IT"
+        career: "DevOps Engineer, Expert technique, Consultant IT",
+        conseils: [
+          "Familiarise-toi avec Docker, Kubernetes et les outils CI/CD.",
+          "Développe une approche méthodique pour le debugging et le troubleshooting.",
+          "Apprends les principes d'infrastructure as code (Terraform, Ansible)."
+        ]
       }
     },
     "Profil étudiant": {
@@ -207,44 +247,84 @@ document.addEventListener('DOMContentLoaded', () => {
       "Le Pragmatique Actif": {
         description: "Tu privilégies l'action concrète et les résultats rapides dans ta carrière.",
         traits: ["pragmatique", "actif", "experience"],
-        career: "Chef de projet, Consultant, Manager opérationnel"
+        career: "Chef de projet, Consultant, Manager opérationnel",
+        conseils: [
+          "Multiplie les stages et expériences professionnelles dès que possible.",
+          "Développe ton réseau professionnel via LinkedIn et les événements du secteur.",
+          "Fixe-toi des objectifs à court terme pour maintenir ta motivation."
+        ]
       },
       "L'Académique Spécialisé": {
         description: "Tu vises l'excellence académique et la spécialisation poussée.",
         traits: ["academique", "specialisation", "formation"],
-        career: "Chercheur, Ingénieur expert, Consultant spécialisé"
+        career: "Chercheur, Ingénieur expert, Consultant spécialisé",
+        conseils: [
+          "Explore les programmes de master et de doctorat dans ton domaine d'intérêt.",
+          "Participe à des projets de recherche et publie si possible.",
+          "Noue des contacts avec des professeurs et chercheurs dans ton domaine."
+        ]
       },
       "L'Entrepreneur Innovant": {
         description: "Tu veux créer et innover dans le monde des affaires.",
         traits: ["entrepreneur", "innovant"],
-        career: "Créateur de startup, Directeur innovation, Consultant stratégique"
+        career: "Créateur de startup, Directeur innovation, Consultant stratégique",
+        conseils: [
+          "Rejoins des incubateurs et participe à des concours de startups.",
+          "Apprends les bases du business model et du pitch investisseur.",
+          "Entoure-toi d'une équipe complémentaire et développe ton réseau."
+        ]
       },
       "L'Aventurier International": {
         description: "Tu cherches les défis à l'international et les nouvelles expériences.",
         traits: ["international", "aventurier"],
-        career: "Consultant international, Chef de projet global, Expert expatrié"
+        career: "Consultant international, Chef de projet global, Expert expatrié",
+        conseils: [
+          "Améliore ton niveau d'anglais et apprends une troisième langue.",
+          "Profite des programmes d'échange (Erasmus, stages à l'étranger).",
+          "Renseigne-toi sur les entreprises internationales et leurs programmes VIE."
+        ]
       }
     },
     "Vie étudiante": {
       "Le Social Actif": {
         description: "Tu combines vie sociale épanouie et activité physique. Tu es énergique et engagé.",
         traits: ["social", "actif", "engagement"],
-        career: "Manager d'équipe, Consultant, Responsable RH"
+        career: "Manager d'équipe, Consultant, Responsable RH",
+        conseils: [
+          "Rejoins des associations étudiantes pour développer ton réseau.",
+          "Pratique un sport d'équipe pour canaliser ton énergie.",
+          "Trouve un équilibre entre vie sociale et réussite académique."
+        ]
       },
       "L'Équilibré Numérique": {
         description: "Tu sais allier détente numérique et équilibre personnel.",
         traits: ["numerique", "equilibre", "personnel"],
-        career: "Développeur, Game Designer, Consultant IT"
+        career: "Développeur, Game Designer, Consultant IT",
+        conseils: [
+          "Utilise ta passion du numérique comme atout dans tes projets.",
+          "Fixe-toi des limites pour préserver ton équilibre vie pro/perso.",
+          "Transforme ton hobby en compétence professionnelle."
+        ]
       },
       "L'Ambitieux Travailleur": {
         description: "Tu es très motivé et n'hésites pas à t'investir pleinement dans tes projets.",
         traits: ["travailleur", "ambitieux", "festif"],
-        career: "Entrepreneur, Directeur, Consultant senior"
+        career: "Entrepreneur, Directeur, Consultant senior",
+        conseils: [
+          "Attention à ne pas te surmener, prévois des moments de récupération.",
+          "Utilise ta motivation pour te fixer des objectifs ambitieux mais réalistes.",
+          "Apprends à déléguer et à faire confiance aux autres."
+        ]
       },
       "Le Studieux Autonome": {
         description: "Tu privilégies le calme et l'autonomie pour développer tes projets personnels.",
         traits: ["calme", "studieux", "autonome"],
-        career: "Chercheur, Développeur indépendant, Analyste"
+        career: "Chercheur, Développeur indépendant, Analyste",
+        conseils: [
+          "Exploite ton goût pour l'autonomie dans des projets personnels ambitieux.",
+          "Force-toi à sortir de ta zone de confort de temps en temps.",
+          "Partage tes connaissances via un blog ou des contributions open source."
+        ]
       }
     }
   };
