@@ -321,11 +321,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       updateProgressIndicator();
       
-      gsap.set([card1, card2], { 
-        opacity: 0, 
-        scale: 1,
-        clearProps: "all"
-      });
+      // Reset cards without gsap
+      card1.style.opacity = '1';
+      card2.style.opacity = '1';
+      card1.style.transform = 'scale(1)';
+      card2.style.transform = 'scale(1)';
       
 
       card1.innerHTML = `
@@ -373,23 +373,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentQuestionIndex++;
     
-    gsap.timeline()
-      .to(selectedCard.querySelector('div:last-child'), {
-        duration: 0.2,
-        backgroundColor: "#4CAF50",
-        ease: "power2.out"
-      })
-      .to([card1, card2], {
-        duration: 0.2,
-        opacity: 0,
-        ease: "power2.in"
-      }, "+=0.3")
-      .call(() => {
+    // Animation without gsap
+    const optionDiv = selectedCard.querySelector('div:last-child');
+    optionDiv.style.transition = 'background 0.2s ease';
+    optionDiv.style.background = '#4CAF50';
+    
+    setTimeout(() => {
+      card1.style.transition = 'opacity 0.2s ease';
+      card2.style.transition = 'opacity 0.2s ease';
+      card1.style.opacity = '0';
+      card2.style.opacity = '0';
+      
+      setTimeout(() => {
         card1.style.pointerEvents = 'auto';
         card2.style.pointerEvents = 'auto';
+        card1.style.transition = '';
+        card2.style.transition = '';
         
         displayQuestion();
-      });
+      }, 300);
+    }, 500);
   }
 
   function showResults() {
@@ -397,6 +400,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (profile) {
       document.body.classList.add('victory-background');
+      
+      // Construire le HTML des débouchés si disponibles
+      let careerHTML = '';
+      if (profile.career) {
+        careerHTML = `
+          <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+            <h4 style="color: #f39c12; margin-bottom: 0.5rem;">💼 Débouchés recommandés :</h4>
+            <p style="color: black; font-weight: 600;">${profile.career}</p>
+          </div>
+        `;
+      }
+      
+      // Construire le HTML des conseils si disponibles
+      let conseilsHTML = '';
+      if (profile.conseils && profile.conseils.length > 0) {
+        conseilsHTML = `
+          <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+            <h4 style="color: #f39c12; margin-bottom: 0.5rem;">💡 Conseils pour réussir :</h4>
+            <ul style="text-align: left; color: black; font-weight: 500; line-height: 1.8;">
+              ${profile.conseils.map(conseil => `<li>${conseil}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      }
+      
       document.body.innerHTML = `
         <button class="btn-finish" onclick="location.reload()">← Retour aux catégories</button>
         <div class="winner">
@@ -406,10 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <p style="font-size: 1.2rem; line-height: 1.6; color: black; margin-bottom: 1.5rem;">
               ${profile.description}
             </p>
-            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-              <h4 style="color: #f39c12; margin-bottom: 0.5rem;">💼 Débouchés recommandés :</h4>
-              <p style="color: black; font-weight: 600;">${profile.career}</p>
-            </div>
+            ${careerHTML}
+            ${conseilsHTML}
           </div>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <button onclick="location.reload()" class="gradient-button">🔄 Tester une autre catégorie</button>
