@@ -286,11 +286,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let maxScore = 0;
     let dominantProfile = null;
 
+    console.log('=== CALCUL DU PROFIL ===');
+    console.log('Catégorie:', category);
+    console.log('Scores actuels:', scores);
+
     for (const [profileName, profileData] of Object.entries(profiles)) {
       let profileScore = 0;
       profileData.traits.forEach(trait => {
         profileScore += scores[trait] || 0;
       });
+      
+      console.log(`${profileName}: ${profileScore} points (traits: ${profileData.traits.join(', ')})`);
       
       if (profileScore > maxScore) {
         maxScore = profileScore;
@@ -298,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    console.log('Profil dominant:', dominantProfile);
     return dominantProfile;
   }
 
