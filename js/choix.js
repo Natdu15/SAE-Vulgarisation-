@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "L'Indépendant Organisé": {
         description: "Tu travailles de manière autonome avec une approche structurée et planifiée.",
         traits: ["independant", "planificateur", "structure"],
+        career: "Chef de projet technique, Développeur senior, Architecte logiciel",
         conseils: [
           "Planifie tes révisions avec des objectifs clairs et atteignables.",
           "Utilise des outils comme des agendas ou des applications de gestion de tâches.",
@@ -174,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "Le Leader Collaboratif": {
         description: "Tu sais diriger une équipe tout en valorisant la collaboration.",
         traits: ["leadership", "collaboratif", "decisif"],
+        career: "Scrum Master, Tech Lead, Manager d'équipe technique",
         conseils: [
           "Prends des initiatives dans les travaux de groupe pour organiser et motiver les autres.",
           "Apprends à déléguer et à faire confiance à tes coéquipiers.",
@@ -183,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "L'Adaptable Créatif": {
         description: "Tu excelles dans l'improvisation et l'innovation face aux défis.",
         traits: ["adaptable", "flexible", "creatif"],
+        career: "Développeur Full-Stack, Consultant agile, Innovation Manager",
         conseils: [
           "Utilise ta créativité pour trouver des approches originales lors des projets ou examens.",
           "Ne crains pas de proposer des idées différentes, même si elles sortent des sentiers battus.",
@@ -192,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "Le Collaborateur Structuré": {
         description: "Tu préfères travailler en équipe dans un environnement organisé.",
         traits: ["supportif", "cooperatif", "discipline"],
+        career: "Business Analyst, Product Owner, Coordinateur de projet",
         conseils: [
           "Appuie tes camarades en apportant ton sens de l'organisation aux projets collectifs.",
           "Cherche à clarifier les rôles et les responsabilités pour éviter les confusions.",
